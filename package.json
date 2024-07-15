@@ -1,0 +1,40 @@
+{
+  "name": "architech-solutions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "architech-solutions",
+  "author": "Bryan Yue",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "deploy": "rd /s /q .\\node_modules\\.cache\\gh-pages>nul 2>&1|echo.>nul && gatsby build && gh-pages -d public -b deploy",
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^3.0.1",
+    "gatsby": "^5.13.5",
+    "gatsby-plugin-google-gtag": "^5.13.1",
+    "gatsby-plugin-image": "^3.13.1",
+    "gatsby-plugin-mdx": "^5.13.1",
+    "gatsby-plugin-postcss": "^6.13.1",
+    "gatsby-plugin-sharp": "^5.13.1",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gatsby-transformer-sharp": "^5.13.1",
+    "postcss": "^8.4.40",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "gh-pages": "^6.1.1",
+    "typescript": "^5.3.3"
+  }
+}
