@@ -11,26 +11,32 @@ Commands are run on "main" branch. Source files are on "main" branch. For deploy
     git pull
     ```
 
-2. Checkout new feature branch that branches off of main
+2. Install packages if needed
+
+   ```shell
+   npm install --legacy-peer-deps
+   ```
+
+3. Checkout new feature branch that branches off of main
 
     ```shell
     git checkout -b <feature_branch_name>
     ```
 
-3. Make and commit changes.
+4. Make and commit changes.
 
     ```shell
     git add .
     git commit -m "message"
     ```
 
-4. Check for build errors.
+5. Check for build errors.
 
     ```shell
     npm run build
     ```
 
-5. Test by running server locally.
+6. Test by running server locally.
 
     ```shell
     npm run start
@@ -39,30 +45,30 @@ Commands are run on "main" branch. Source files are on "main" branch. For deploy
     [Local Site](http://localhost:8000)
 
 
-4. Push feature branch to remote.
+7. Push feature branch to remote.
 
     ```shell
     git push --set-upstream origin <feature_branch_name>
     ```
 
-5. Create Pull Request to [Main](https://github.com/byue/byue.github.io/tree/main) branch.
+8. Create Pull Request to [Main](https://github.com/byue/byue.github.io/tree/main) branch.
 
-6. Address Pull request comments. Make changes if required, and push updates for next review iteration.
+9. Address Pull request comments. Make changes if required, and push updates for next review iteration.
 
     ```shell
     git add .
     git push
     ```
 
-7. Once review is approved, code review can be merged into "main" branch.
+10. Once review is approved, code review can be merged into "main" branch.
 
-8. Deploy changes to production site. This generates and commits static files to "deploy" branch.
+11. Deploy changes to production site. This generates and commits static files to "deploy" branch.
 
     ```shell
     npm run deploy
     ```
 
-9. View production site.
+12. View production site.
 
     [Production Site](https://www.architech-solutions.com)
 
