@@ -11,20 +11,23 @@ const pageStyles = {
 const words = [
   {
     text: "Simple",
-    className: "text-main dark:text-main",
+    className: "text-main",
   },
   {
     text: "solutions",
-    className: "text-main dark:text-main",
+    className: "text-main",
   },
   {
     text: "to",
+    className: "text-white font-light",
   },
   {
     text: "complex",
+    className: "text-white font-light",
   },
   {
     text: "problems.",
+    className: "text-white font-light",
   },
 ];
 
@@ -43,15 +46,15 @@ const IndexPage: React.FC<PageProps> = () => {
         <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative mx-auto w-full z-20">
           Architech Solutions
         </h1>
-        <div className="w-full sm:w-[24rem] md:w-[48rem] lg:w-[72rem] h-40 relative items-center justify-center ">
+        <div className="w-full sm:w-[24rem] md:w-[48rem] lg:w-[72rem] h-1 relative items-center justify-center">
           <div className="absolute inset-x-0 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-full mx-auto blur-sm" />
           <div className="absolute inset-x-0 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-full mx-auto" />
           <div className="absolute inset-x-0 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-full mx-auto blur-sm" />
           <div className="absolute inset-x-0 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-full mx-auto" />
         </div>
-      </div>
-      <div className="flex flex-col items-center justify-center h-[10rem]">
-        <TypewriterEffect words={words} />
+        <div className="flex items-center justify-center align-center h-[18rem] z-10">
+          <TypewriterEffect words={words} />
+        </div>
       </div>
     </main>
   )
