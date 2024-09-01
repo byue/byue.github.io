@@ -77,5 +77,5 @@ Commands are run on "main" branch. Source files are on "main" branch. For deploy
 - Hosting: [GitHub Pages](https://pages.github.com/)
 - Frontend Framework (SSG): [Gatsby](https://www.gatsbyjs.com/)
 - Animations: [Framer Motion](https://www.framer.com/motion/introduction/)
-- UI Components: [Mantine](https://mantine.dev/guides/gatsby/)
+- UI Components: [Aceternity](https://ui.aceternity.com/components)
 - Photo Assets: [Unplash](https://unsplash.com/)
