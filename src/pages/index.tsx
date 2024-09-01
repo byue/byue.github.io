@@ -11,11 +11,11 @@ const pageStyles = {
 const words = [
   {
     text: "Simple",
-    className: "text-sky-500 dark:text-sky-500",
+    className: "text-main dark:text-main",
   },
   {
     text: "solutions",
-    className: "text-sky-500 dark:text-sky-500",
+    className: "text-main dark:text-main",
   },
   {
     text: "to",
