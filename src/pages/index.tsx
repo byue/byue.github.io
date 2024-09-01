@@ -5,7 +5,7 @@ import { TypewriterEffect } from "../components/ui/typewriter-effect";
 
 const pageStyles = {
   color: "#232129",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
+  fontFamily: "Montserrat",
 }
 
 const words = [
