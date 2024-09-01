@@ -2,20 +2,17 @@ import React, { useId } from "react";
 import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadLinksPreset } from "@tsparticles/preset-links";
+import useWindowDimensions from "../../lib/windowDimensions";
 
 type ParticleLinksProps = {
   id?: string;
   className?: string;
-  numParticles?: number;
-  linksDistance?: number;
   backgroundColor?: string;
 };
 export const ParticleLinks = (props: ParticleLinksProps) => {
   const {
     id,
     className,
-    numParticles,
-    linksDistance,
     backgroundColor,
   } = props;
   const [init, setInit] = useState(false);
@@ -26,6 +23,33 @@ export const ParticleLinks = (props: ParticleLinksProps) => {
       setInit(true);
     });
   }, []);
+
+  const { width } = useWindowDimensions();
+  let numParticles = 200;
+  switch (true) {
+    case (width < 640):
+        numParticles = 100;
+        break;
+    case (width < 768):
+        numParticles = 125;
+        break;
+    case (width < 1024):
+        numParticles = 150;
+        break;
+  }
+
+  let linksDistance = 120;
+  switch (true) {
+    case (width < 640):
+      linksDistance = 60;
+        break;
+    case (width < 768):
+      linksDistance = 80;
+        break;
+    case (width < 1024):
+      linksDistance = 100;
+        break;
+  }
 
   const generatedId = useId();
   return (init &&
