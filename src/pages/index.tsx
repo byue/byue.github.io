@@ -2,6 +2,7 @@ import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import { ParticleLinks } from "../components/ui/particle-links";
+import { TextHoverEffect } from "../components/ui/text-hover-effect";
 
 const pageStyles = {
   color: "#232129",
@@ -53,6 +54,11 @@ const IndexPage: React.FC<PageProps> = () => {
       <div className="flex flex-col items-center justify-center h-[10rem]">
         <TypewriterEffect words={words} />
       </div>
+
+      <div className="h-[20rem] flex items-center justify-center">
+        <TextHoverEffect text="Contact Us" />
+      </div>
+
     </main>
   )
 }
