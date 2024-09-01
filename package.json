@@ -1,14 +1,13 @@
 {
-  "name": "architech-solutions",
+  "name": "demo",
   "version": "1.0.0",
   "private": true,
-  "description": "architech-solutions",
+  "description": "demo",
   "author": "Bryan Yue",
   "keywords": [
     "gatsby"
   ],
   "scripts": {
-    "deploy": "rd /s /q .\\node_modules\\.cache\\gh-pages>nul 2>&1|echo.>nul && gatsby build && gh-pages -d public -b deploy",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -18,30 +17,31 @@
   },
   "dependencies": {
     "@mdx-js/react": "^3.0.1",
-    "gatsby": "^5.13.5",
-    "gatsby-plugin-google-gtag": "^5.13.1",
+    "autoprefixer": "^10.4.20",
+    "framer-motion": "^11.3.31",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.2",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/engine": "^3.5.0",
+    "@tsparticles/slim": "^3.5.0",
+    "gatsby": "^5.13.7",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-mdx": "^5.13.1",
     "gatsby-plugin-postcss": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
-    "postcss": "^8.4.40",
+    "gatsby-omni-font-loader": "^2.0.2",
+    "postcss": "^8.4.42",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@mantine/core": "^7.12.2",
-    "@mantine/hooks": "7.12.2",
-    "@mantine/spotlight": "7.12.2",
-    "postcss-preset-mantine": "^1.17.0",
-    "postcss-simple-vars":"^7.0.1",
-    "gatsby-omni-font-loader": "^2.0.2",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
-    "gh-pages": "^6.1.1",
     "typescript": "^5.3.3"
   }
 }
