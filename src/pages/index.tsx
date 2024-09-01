@@ -1,7 +1,7 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import { SparklesCore } from "../components/ui/sparkles";
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
+import { ParticleLinks } from "../components/ui/particle-links";
 
 const pageStyles = {
   color: "#232129",
@@ -31,7 +31,13 @@ const words = [
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={pageStyles}>
-      <div className="h-[40rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
+      <div className="relative h-[40rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">        
+        <ParticleLinks
+          className="absolute w-full h-full"
+          numParticles={200}
+          linksDistance={90}
+          backgroundColor="black">
+        </ParticleLinks>
         <div className="flex flex-wrap justify-center space-x-4 mb-24">
           {['Home', 'Skills', 'Services', 'Customers', 'Contact'].map(buttonLabel => 
             <button className="flex-auto text-white relative h-[50px] sm:w-[5rem] md:w-[7rem] lg:w-[12rem] overflow-hidden rounded-full border-2 border-[#616467] px-3 text-white uppercase font-light shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-sky-500 before:transition-all before:duration-300 hover:text-white hover:shadow-sky-500 hover:before:left-0 hover:before:w-full">
@@ -43,25 +49,13 @@ const IndexPage: React.FC<PageProps> = () => {
           Architech Solutions
         </h1>
         <div className="w-full sm:w-[24rem] md:w-[48rem] lg:w-[72rem] h-40 relative items-center justify-center ">
-          {/* Gradients */}
           <div className="absolute inset-x-0 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-full mx-auto blur-sm" />
           <div className="absolute inset-x-0 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-full mx-auto" />
           <div className="absolute inset-x-0 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-full mx-auto blur-sm" />
           <div className="absolute inset-x-0 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-full mx-auto" />
-          {/* Core component */}
-          <SparklesCore
-            background="transparent"
-            minSize={0.4}
-            maxSize={1}
-            particleDensity={1200}
-            className="w-full mx-auto h-full rounded-md"
-            particleColor="#FFFFFF"
-          />
-          {/* Radial Gradient to prevent sharp edges */}
-          <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center h-[10rem] ">
+      <div className="flex flex-col items-center justify-center h-[10rem]">
         <TypewriterEffect words={words} />
       </div>
     </main>
