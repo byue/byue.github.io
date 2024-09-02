@@ -19,6 +19,10 @@ const words = [
     className: "text-main",
   },
   {
+    text: "tech",
+    className: "text-main",
+  },
+  {
     text: "solutions",
     className: "text-main",
   },
