@@ -96,14 +96,14 @@ const IndexPage: React.FC<PageProps> = () => {
           <TypewriterEffect words={words} />
         </div>
       </div>
-      <div className="relative h-[50rem] w-full bg-black bg-dot-white/[0.3] relative flex items-center justify-center">
+      <div className="relative h-[60rem] w-full bg-black bg-dot-white/[0.3] relative flex items-center justify-center">
         {/* Radial gradient for the container to give a faded look */}
         <div className="z-0 absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div id="about us" className="z-10 bg-transparent column px-[11rem]">
-          <h1 className=" text-white text-[4rem] text-center font-medium mt-[12rem] mb-[2rem]">
+          <h1 className=" text-white text-[4rem] text-center font-medium mt-[22rem] mb-[2rem]">
             About Us
           </h1>
-          <div className="text-4xl pl-[2rem] mx-auto text-white text-left tracking-wider mb-[12rem] font-normal">
+          <div className="text-4xl pl-[2rem] mx-auto text-white text-left tracking-wider mb-[22rem] font-normal">
             At Architech Solutions, our mission is to provide businesses with expert software consulting
             that solves complex problems with simple solutions. We are dedicated to offering expert
             solutions that address unique business needs, foster innovation, and support sustainable growth.
