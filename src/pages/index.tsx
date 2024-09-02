@@ -2,11 +2,15 @@ import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import { ParticleLinks } from "../components/ui/particle-links";
+import { Timeline } from "../components/ui/timeline";
+
 
 const pageStyles = {
   color: "#232129",
   fontFamily: "Montserrat",
 }
+
+
 
 const words = [
   {
@@ -31,19 +35,48 @@ const words = [
   },
 ];
 
+const data = [
+  {
+    title: "Services",
+    content: (
+      <h1>What we provide</h1>
+    ),
+  },
+  {
+    title: "Skills",
+    content: (
+      <h1>What we can do</h1>
+    ),
+  },
+  {
+    title: "Customers",
+    content: (
+      <h1>Who we work with</h1>
+    ),
+  },
+  {
+    title: "Contact",
+    content: (
+      <div>
+        <h1> Email: bryan.yue@architech-solutions.com</h1>
+        <h1> Phone: xxx-xxx-xxxx</h1>
+      </div>
+    ),
+  },
+];
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={pageStyles}>
-      <div className="relative h-[40rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">        
+      <div id="header" className="relative h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
         <ParticleLinks className="absolute w-full h-full"/>
-        <div className="flex flex-wrap justify-center space-x-4 mb-24">
+        <div id="nav_bar" className="flex flex-wrap justify-center space-x-4 mb-24">
           {['Home', 'Skills', 'Services', 'Customers', 'Contact'].map(buttonLabel => 
             <button className="flex-auto text-white relative h-[50px] sm:w-[5rem] md:w-[7rem] lg:w-[12rem] overflow-hidden rounded-full border-2 border-[#616467] px-3 text-white uppercase font-light shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-sky-500 before:transition-all before:duration-300 hover:text-white hover:shadow-sky-500 hover:before:left-0 hover:before:w-full">
               <span className="relative z-10 sm:xs md:text-sm lg:text-2xl xl:text-2xl">{buttonLabel}</span>
             </button>
           )}
         </div>
-        <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative mx-auto w-full z-20">
+        <h1 id="main_title" className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative mx-auto w-full z-20">
           Architech Solutions
         </h1>
         <div className="w-full sm:w-[24rem] md:w-[48rem] lg:w-[72rem] h-1 relative items-center justify-center">
@@ -56,6 +89,14 @@ const IndexPage: React.FC<PageProps> = () => {
           <TypewriterEffect words={words} />
         </div>
       </div>
+
+      <div id="herobar"></div>
+
+
+      <div id="timeline" className="id=timeline w-full h-screen bg-black">
+        <Timeline data={data} />
+      </div>
+
     </main>
   )
 }
