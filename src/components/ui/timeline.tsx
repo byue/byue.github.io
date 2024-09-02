@@ -33,7 +33,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-white dark:bg-black font-sans md:px-10"
+      className="w-full bg-black font-sans md:px-10"
       ref={containerRef}
     >
 
@@ -46,14 +46,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-[rem10]">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 p-2" />
+              <div className="h-6 w-6 absolute left-5 md:left-5 w-10 rounded-full bg-slate-500 flex items-center justify-center">
+                <div className="h-6 w-6 rounded-full bg-slate-500 border border-neutral-300 p-2" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500 ">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-white">
                 {item.title} {/*left side*/}
               </h3>
             </div>
-            <div className="relative pl-20 pr-4 md:pl-1 w-full flex items-center">
+            <div className="relative pl-20 pr-4 md:pl-1 w-full flex items-center text-white">
               {item.content}{" "} {/*right side*/}
             </div>
           </div>
