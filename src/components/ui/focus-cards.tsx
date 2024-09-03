@@ -14,6 +14,7 @@ query ServiceImageQuery {
           id
           gatsbyImageData(
             placeholder: DOMINANT_COLOR
+            transformOptions: {fit: COVER}
           )
         }
       }
@@ -21,8 +22,6 @@ query ServiceImageQuery {
   }
 }
 `;
-
-
 
 export const Card = React.memo(
   ({
