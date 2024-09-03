@@ -5,9 +5,7 @@ import { ParticleLinks } from "../components/ui/particle-links";
 import { Timeline } from "../components/ui/timeline";
 import { FlipWords } from "../components/ui/flip-words";
 import { FocusCards } from "../components/ui/focus-cards";
-
-
-
+import { Tabs } from "../components/ui/tabs";
 
 const pageStyles = {
   color: "#232129",
@@ -43,11 +41,6 @@ const words = [
   },
 ];
 
-
-
-
-
-
 const data = [
   {
     title: "Services",
@@ -58,7 +51,9 @@ const data = [
   {
     title: "Skills",
     content: (
-      <h1>What we can do</h1>
+      <div className="pl-[5rem] h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">
+        <Tabs />
+      </div>
     ),
   },
   {
@@ -120,10 +115,6 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         </div>
       </div>
-      <div>
-        
-      </div>
-
 
       <div id="timeline" className="id=timeline w-full h-screen bg-black">
         <Timeline data={data} />
