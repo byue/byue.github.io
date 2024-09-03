@@ -14,7 +14,9 @@ query ServiceImageQuery {
           id
           gatsbyImageData(
             placeholder: DOMINANT_COLOR
-            transformOptions: {fit: COVER}
+            transformOptions: {fit: COVER, cropFocus: ENTROPY}
+            width: 533
+            height: 800
           )
         }
       }
