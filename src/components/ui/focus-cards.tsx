@@ -36,34 +36,29 @@ export const Card = React.memo(
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
-  }) => {
-    const imageStyling = ["object-cover", "absolute", "inset-0"];
-    if (node.name === "AI") {
-    } 
-
-    return (
+  }) => (
+    <div
+        onMouseEnter={() => setHovered(index)}
+        onMouseLeave={() => setHovered(null)}
+        className={cn(
+            "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out",
+            hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+        )}
+        >
+            <GatsbyImage className={"object-cover absolute inset-0"} image={getImage(node.image)!} alt={node.image}/>
         <div
-            onMouseEnter={() => setHovered(index)}
-            onMouseLeave={() => setHovered(null)}
             className={cn(
-                "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out",
-                hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+            "absolute inset-0 bg-black/50 flex items-end py-8 px-4 transition-opacity duration-300",
+            hovered === index ? "opacity-100" : "opacity-0"
             )}
-            >
-                <GatsbyImage className={imageStyling.join(" ")} image={getImage(node.image)!} alt={node.image}/>
-            <div
-                className={cn(
-                "absolute inset-0 bg-black/50 flex items-end py-8 px-4 transition-opacity duration-300",
-                hovered === index ? "opacity-100" : "opacity-0"
-                )}
-            >
-                <div className="z-40 text-6xl md:text-3xl font-light bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
-                    {node.name}
-                </div>
-                <br/>
+        >
+            <div className="z-40 pb-[1rem] text-6xl md:text-3xl font-light bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
+                {node.name}
             </div>
+            <br/>
         </div>
-    )}
+    </div>
+  )
 );
 
 export function FocusCards() {
