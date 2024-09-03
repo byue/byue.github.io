@@ -121,7 +121,7 @@ export const FadeInDiv = ({
   const isActive = (tab: Tab) => {
     return tab.tabName === tabs[0].tabName;
   };
-  const numCols = Math.ceil(Math.sqrt(tabs.length));
+
   return (
     <div className="w-full h-full">
       {tabs.map((tab: Tab, idx: number) => (
@@ -139,7 +139,7 @@ export const FadeInDiv = ({
           }}
           className={cn("w-full h-full absolute", className)}
         >
-          <div className={`grid grid-cols-${numCols} gap-2 w-full mx-auto rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-white to-slate-500`}>   
+          <div className={`grid grid-cols-2 gap-2 w-full mx-auto rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-white to-slate-500`}>   
               {tab.tabImages.map((tabImage: any, index: number) => (
                 <div key={index} className="flex flex-col top-0 items-center">
                   <h1 className="text-black pb-[2rem]">{tabImage.name}</h1>
