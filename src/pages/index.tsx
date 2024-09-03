@@ -4,6 +4,9 @@ import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import { ParticleLinks } from "../components/ui/particle-links";
 import { Timeline } from "../components/ui/timeline";
 import { FlipWords } from "../components/ui/flip-words";
+import { FocusCards } from "../components/ui/focus-cards";
+
+
 
 
 const pageStyles = {
@@ -40,11 +43,16 @@ const words = [
   },
 ];
 
+
+
+
+
+
 const data = [
   {
     title: "Services",
     content: (
-      <h1>What we provide</h1>
+      <FocusCards />
     ),
   },
   {
@@ -112,6 +120,11 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         </div>
       </div>
+      <div>
+        
+      </div>
+
+
       <div id="timeline" className="id=timeline w-full h-screen bg-black">
         <Timeline data={data} />
       </div>
