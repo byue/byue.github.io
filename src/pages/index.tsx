@@ -46,7 +46,7 @@ const timelineData = [
   {
     title: "Services",
     content: (
-        <FocusCards />
+      <FocusCards />
     ),
   },
   {
@@ -75,12 +75,12 @@ const timelineData = [
 ];
 
 const tabData = [
-  {tabName: 'Home', buttonId: 'homeButton', jumpId: 'home', offset: -50},
-  {tabName: 'About Us', buttonId: 'aboutUsButton', jumpId: 'aboutus', offset: -50}, 
-  {tabName: 'Services', buttonId: 'servicesButton', jumpId: 'services', offset: -50}, 
-  {tabName: 'Skills', buttonId: 'skillsButton', jumpId: 'skills', offset: -50},
-  {tabName: 'Customers', buttonId: 'customersButton', jumpId: 'customers', offset:-50},
-  {tabName: 'Contact', buttonId: 'contactButton', jumpId: 'contact', offset:-50},
+  {tabName: 'Home', buttonId: 'homeButton', jumpId: 'home'},
+  {tabName: 'About Us', buttonId: 'aboutUsButton', jumpId: 'aboutus'}, 
+  {tabName: 'Services', buttonId: 'servicesButton', jumpId: 'services'}, 
+  {tabName: 'Skills', buttonId: 'skillsButton', jumpId: 'skills'},
+  {tabName: 'Customers', buttonId: 'customersButton', jumpId: 'customers'},
+  {tabName: 'Contact', buttonId: 'contactButton', jumpId: 'contact'},
 ];
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -99,7 +99,7 @@ const IndexPage: React.FC<PageProps> = () => {
             </button>
           )}
         </div>
-        <h1 id="Main Page" className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative mx-auto w-full z-20">
+        <h1 id="main_page" className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative mx-auto w-full z-20">
           Architech Solutions
         </h1>
         <div className="w-full sm:w-[24rem] md:w-[48rem] lg:w-[72rem] h-1 relative items-center justify-center">
@@ -116,7 +116,7 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* Radial gradient for the container to give a faded look */}
         <div id="aboutus" className="z-0 absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div className="z-10 bg-transparent column px-[11rem]">
-          <h1  className=" text-white text-[4rem] text-center font-medium mt-[22rem] mb-[2rem] pt:[40rem]">
+          <h1 className=" text-white text-[4rem] text-center font-medium mt-[22rem] mb-[2rem] pt:[40rem]">
             About Us
           </h1>
           <div className="text-4xl pl-[2rem] mx-auto text-white text-left tracking-wider mb-[22rem] font-normal">
