@@ -10,7 +10,6 @@ query skillsImageQuery {
   allSkillsImagesJson {
     nodes {
       tabName
-      tabDescription
       tabImages {
         image {
           childImageSharp {
@@ -34,7 +33,6 @@ type TabImage = {
 
 type Tab = {
   tabName: string;
-  tabDescription: string;
   tabImages: TabImage[];
 };
 

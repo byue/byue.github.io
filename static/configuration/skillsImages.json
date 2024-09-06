@@ -1,7 +1,6 @@
 [
     {
         "tabName": "Frontend",
-        "tabDescription": "Presentation is everything",
         "tabImages": [
             {
                 "name": "React",
@@ -23,7 +22,6 @@
     },
     {
         "tabName": "Backend",
-        "tabDescription": "How our solutions come to life",
         "tabImages": [
             {
                 "name": ".NET Core",
@@ -45,7 +43,6 @@
     },
     {
         "tabName": "Storage",
-        "tabDescription": "Keep your data safe and secure",
         "tabImages": [
             {
                 "name": "SQL",
@@ -67,7 +64,6 @@
     },
     {
         "tabName": "3D Design",
-        "tabDescription": "If you can think it, we can make it",
         "tabImages": [
             {
                 "name": "Rhinoceros",

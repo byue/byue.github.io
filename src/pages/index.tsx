@@ -81,7 +81,6 @@ const tabData = [
   {tabName: 'About Us', buttonId: 'aboutUsButton', jumpId: 'aboutus'}, 
   {tabName: 'Services', buttonId: 'servicesButton', jumpId: 'services'}, 
   {tabName: 'Skills', buttonId: 'skillsButton', jumpId: 'skills'},
-  /*{tabName: 'Customers', buttonId: 'customersButton', jumpId: 'customers'},*/
   {tabName: 'Contact', buttonId: 'contactButton', jumpId: 'contact'},
 ];
 
