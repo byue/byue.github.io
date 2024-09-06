@@ -3,6 +3,7 @@ import {GatsbyImage, getImage} from "gatsby-plugin-image";
 import React, { useState } from "react";
 import { cn } from "../../lib/utils";
 import { graphql, useStaticQuery } from "gatsby";
+import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
 const serviceImageQuery = graphql`
 query ServiceImageQuery {

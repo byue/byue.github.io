@@ -8,6 +8,7 @@ import { FocusCards } from "../components/ui/focus-cards";
 import { Tabs } from "../components/ui/tabs";
 import scrollTo from 'gatsby-plugin-smoothscroll';
 
+
 const pageStyles = {
   color: "#232129",
   fontFamily: "Montserrat",
@@ -52,17 +53,18 @@ const timelineData = [
   {
     title: "Skills",
     content: (
-      <div id="skills" className="pl-[5rem] h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">
+      <div id="skills" className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">
         <Tabs />
       </div>
     ),
   },
+  /*
   {
     title: "Customers",
     content: (
       <h1 id="customers">Who we work with</h1>
     ),
-  },
+  },*/
   {
     title: "Contact",
     content: (
@@ -79,13 +81,13 @@ const tabData = [
   {tabName: 'About Us', buttonId: 'aboutUsButton', jumpId: 'aboutus'}, 
   {tabName: 'Services', buttonId: 'servicesButton', jumpId: 'services'}, 
   {tabName: 'Skills', buttonId: 'skillsButton', jumpId: 'skills'},
-  {tabName: 'Customers', buttonId: 'customersButton', jumpId: 'customers'},
+  /*{tabName: 'Customers', buttonId: 'customersButton', jumpId: 'customers'},*/
   {tabName: 'Contact', buttonId: 'contactButton', jumpId: 'contact'},
 ];
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles} className="bg-black">
+    <main id="home" style={pageStyles} className="bg-black">
       <div id="header" className="relative h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md mb-[4rem]">
         <ParticleLinks className="absolute w-full h-full"/>
         <div id="nav_bar" className="flex flex-wrap justify-center space-x-4 mb-24">
@@ -128,7 +130,6 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         </div>
       </div>
-
       <div id="timeline" className="id=timeline w-full h-screen bg-black">
         <Timeline data={timelineData} />
       </div>
