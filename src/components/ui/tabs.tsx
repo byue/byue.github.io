@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { cn } from "../..//lib/utils";
 import { graphql, useStaticQuery } from "gatsby";
 import {GatsbyImage, getImage} from "gatsby-plugin-image";
+import { CardBody, CardContainer, CardItem } from "./3d-card";
 
 const skillsImageQuery = graphql`
 query skillsImageQuery {
@@ -84,13 +85,13 @@ export const Tabs = ({
                 layoutId="clickedbutton"
                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                 className={cn(
-                  "absolute inset-0 bg-gray-200 dark:bg-zinc-800 rounded-full ",
+                  "absolute inset-0 bg-zinc-800 dark:bg-zinc-800 rounded-full ",
                   activeTabClassName
                 )}
               />
             )}
 
-            <span className="relative block text-black dark:text-white text-2xl">
+            <span className="relative block text-white text-2xl font-light">
               {tab.tabName}
             </span>
           </button>
@@ -101,7 +102,7 @@ export const Tabs = ({
         active={active}
         key={active.tabName}
         hovering={hovering}
-        className={cn("mt-32", contentClassName)}
+        className={cn("mt-16", contentClassName)}
       />
     </>
   );
@@ -139,14 +140,22 @@ export const FadeInDiv = ({
           }}
           className={cn("w-full h-full absolute", className)}
         >
-          <div className={`grid grid-cols-2 gap-2 w-full mx-auto rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-white to-slate-500`}>   
-              {tab.tabImages.map((tabImage: any, index: number) => (
-                <div key={index} className="flex flex-col top-0 items-center">
-                  <h1 className="text-black pb-[2rem]">{tabImage.name}</h1>
-                  <GatsbyImage className="w-1/2 h-auto object-cover" image={getImage(tabImage.image)!} alt={tabImage.name}/>
+        <CardContainer className="w-full">
+              <CardBody className="relative w-auto sm:w-[30rem] rounded-xl">
+                <CardItem translateZ="100" className="w-full mt-4">
+                        <div className={`grid grid-cols-2 gap-2 w-full mx-auto rounded-2xl p-10 text-xl md:text-4xl -bold text-slate-500 bg-gradient-to-br from-white to-slate-700`}>   
+                      {tab.tabImages.map((tabImage: any, index: number) => (
+                        <div key={index} className="flex flex-col top-0 items-center">
+                          <h1 className="text-black text-3xl pb-[2rem] font-light">{tabImage.name}</h1>
+                          <GatsbyImage className="w-1/2 h-auto object-cover" image={getImage(tabImage.image)!} alt={tabImage.name}/>
+                        </div>
+                      ))}
+                  </div>
+                </CardItem>
+                <div className="flex justify-between items-center mt-20">
                 </div>
-              ))}
-          </div>
+              </CardBody>
+            </CardContainer>
         </motion.div>
       ))}
     </div>
