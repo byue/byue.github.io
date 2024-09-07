@@ -42,7 +42,8 @@
     "@tabler/icons-react": "^3.14.0",
     "mini-svg-data-uri": "^1.4.4",
     "gatsby-transformer-json": "^5.13.1",
-    "gatsby-plugin-smoothscroll":"^1.2.0"
+    "gatsby-plugin-smoothscroll":"^1.2.0",
+    "@radix-ui/react-label":"^2.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
