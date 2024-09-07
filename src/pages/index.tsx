@@ -95,7 +95,8 @@ const timelineData = [
           Have questions? Send us an email here!
         </p>
         <form className="my-8" method="POST" action={process.env.GATSBY_WEB3_API_URL}>
-          <input type="hidden" name="access_key" value={process.env.GATSBY_WEB3_API_KEY}></input>
+          <input type="checkbox" name="botcheck" className="hidden" />
+          <input type="hidden" name="access_key" value={process.env.GATSBY_WEB3_API_KEY} />
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
             <LabelInputContainer>
               <Label className="font-light" htmlFor="First-Name">First Name</Label>
@@ -117,12 +118,12 @@ const timelineData = [
           </LabelInputContainer>
           <LabelInputContainer className="mb-4 text-wrap h-40 font-light">
             <Label className="font-light" htmlFor="issue">Message</Label>
-            <textarea name="Message" placeholder="Tell us about your problem! We'll be glad to help out." className="flex-none m-[2px] h-[9rem] w-full border-none bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 text-sm  file:border-0 file:bg-transparent 
+            <Input name="Message" placeholder="Tell us about your problem! We'll be glad to help out." className="flex-none m-[2px] h-[7.5rem] w-full border-none bg-zinc-800 text-white shadow-input rounded-md px-3 text-sm  file:border-0 file:bg-transparent 
             file:text-sm file:font-light placeholder:placeholder-text-neutral-600 
             focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-600
             disabled:cursor-not-allowed disabled:opacity-50
             dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
-            group-hover/input:shadow-none transition duration-400 overflow-x-hidden inline-block align-top text-left align-top leading-normal resize-none"></textarea>
+            group-hover/input:shadow-none transition duration-400 overflow-x-hidden inline-block align-top text-left align-top leading-normal resize-none"></Input>
           </LabelInputContainer> 
           <button
             className="font-light absolute pt-[5-rem] bg-gradient-to-br relative group/btn from-black from-zinc-900 to-zinc-900 to-neutral-600 block bg-zinc-800 w-full text-white rounded-md h-10 shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
@@ -132,7 +133,6 @@ const timelineData = [
             <BottomGradient />
           </button>
           </div>
-          <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
         </form>
       </div>
     ),
