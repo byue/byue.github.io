@@ -118,7 +118,7 @@ const timelineData = [
           </LabelInputContainer>
           <LabelInputContainer className="mb-4 text-wrap h-40 font-light">
             <Label className="font-light" htmlFor="issue">Message</Label>
-            <Input name="Message" placeholder="Tell us about your problem! We'll be glad to help out." className="flex-none m-[2px] h-[9rem] w-full border-none bg-zinc-800 text-white shadow-input rounded-md px-3 text-sm  file:border-0 file:bg-transparent 
+            <Input name="Message" placeholder="Tell us about your problem! We'll be glad to help out." className="flex-none m-[2px] h-[7.5rem] w-full border-none bg-zinc-800 text-white shadow-input rounded-md px-3 text-sm  file:border-0 file:bg-transparent 
             file:text-sm file:font-light placeholder:placeholder-text-neutral-600 
             focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-600
             disabled:cursor-not-allowed disabled:opacity-50
@@ -133,7 +133,6 @@ const timelineData = [
             <BottomGradient />
           </button>
           </div>
-          <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
         </form>
       </div>
     ),
