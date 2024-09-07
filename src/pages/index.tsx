@@ -100,21 +100,21 @@ const timelineData = [
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
             <LabelInputContainer>
               <Label className="font-light" htmlFor="First-Name">First Name</Label>
-              <Input className="font-light" id="name" placeholder="First Name" type="text" name="First-Name" />
+              <Input className="font-light" id="name" placeholder="First Name" type="text" name="First-Name" required />
             </LabelInputContainer>
             <LabelInputContainer>
               <Label className="font-light" htmlFor="Last-Name">Last Name</Label>
-              <Input className="font-light" id="name" placeholder="Last Name" type="text" name="Last-Name" />
+              <Input className="font-light" id="name" placeholder="Last Name" type="text" name="Last-Name" required  />
             </LabelInputContainer>
           </div>
           <div className="relative">
           <LabelInputContainer className="mb-4">
             <Label className="font-light" htmlFor="Email">Email</Label>
-            <Input className="font-light" id="email" placeholder="E.g: myemail@gmail.com" type="email" name="Email" />
+            <Input className="font-light" id="email" placeholder="E.g: myemail@gmail.com" type="email" name="email" required  />
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
             <Label className="font-light" htmlFor="Subject">Subject</Label>
-            <Input className="font-light" id="email" placeholder="Enter your email subject here." type="subject" name="Subject" />
+            <Input className="font-light" id="email" placeholder="Enter your email subject here." type="subject" name="Subject" required  />
           </LabelInputContainer>
           <LabelInputContainer className="mb-4 text-wrap h-40 font-light">
             <Label className="font-light" htmlFor="issue">Message</Label>
@@ -123,7 +123,7 @@ const timelineData = [
             focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-600
             disabled:cursor-not-allowed disabled:opacity-50
             dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
-            group-hover/input:shadow-none transition duration-400 overflow-x-hidden inline-block align-top text-left align-top leading-normal resize-none"></Input>
+            group-hover/input:shadow-none transition duration-400 overflow-x-hidden inline-block align-top text-left align-top leading-normal resize-none" required></Input>
           </LabelInputContainer> 
           <button
             className="font-light absolute pt-[5-rem] bg-gradient-to-br relative group/btn from-black from-zinc-900 to-zinc-900 to-neutral-600 block bg-zinc-800 w-full text-white rounded-md h-10 shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
@@ -185,8 +185,8 @@ const IndexPage: React.FC<PageProps> = () => {
           </h1>
           <div className="text-4xl pl-[2rem] mx-auto text-white text-left tracking-wider mb-[22rem] font-normal">
             At Architech Solutions, our mission is to provide businesses with expert software consulting
-            that solves complex problems with simple solutions. We are dedicated to offering expert
-            solutions that address unique business needs, foster innovation, and support sustainable growth.
+            that tailors to any customer requirement. We are dedicated to offering
+            solutions that address unique business needs, foster rapid innovation, and support sustainable growth.
             Through clarity, collaboration, and commitment, we turn technology challenges into opportunities for 
             <FlipWords words={flipWords} duration={750} />
           </div>
@@ -194,7 +194,9 @@ const IndexPage: React.FC<PageProps> = () => {
       </div>
       <div id="timeline" className="id=timeline w-full h-screen bg-black">
         <Timeline data={timelineData} />
+        <h5 className="relative p-[3rem] text-slate-600 text-center bg-black ">©2024 Architech Solutions LLC. All rights reserved.</h5>
       </div>
+
     </main>
   )
 }
