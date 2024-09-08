@@ -1,4 +1,3 @@
-// Input component extends from shadcnui - https://ui.shadcn.com/docs/components/input
 "use client";
 import * as React from "react";
 import { cn } from "../../lib/utils";
@@ -7,7 +6,7 @@ import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const EmailSubmitButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, type, ...props }, ref) => {
     const radius = 100; // change this to increase the rdaius of the hover effect
     const [visible, setVisible] = React.useState(false);
@@ -56,6 +55,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
-Button.displayName = "Button";
+EmailSubmitButton.displayName = "EmailSubmitButton";
 
-export { Button };
+export { EmailSubmitButton };

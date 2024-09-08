@@ -9,7 +9,7 @@ import { Tabs } from "../components/ui/tabs";
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
-import { Button } from "../components/ui/button";
+import { EmailSubmitButton } from "../components/ui/email-submit-button";
 import { cn } from "../lib/utils";
 
 const pageStyles = {
@@ -45,7 +45,6 @@ const words = [
     className: "text-white font-light",
   },
 ];
-
 
 const LabelInputContainer = ({
   children,
@@ -117,12 +116,12 @@ const timelineData = [
             dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
             group-hover/input:shadow-none transition duration-400 overflow-x-hidden inline-block align-top text-left align-top leading-normal resize-none" required></Input>
           </LabelInputContainer> 
-          <Button
+          <EmailSubmitButton
             className="font-light absolute pt-[5-rem] bg-gradient-to-br relative group/btn from-black from-zinc-900 to-zinc-900 to-neutral-600 block bg-zinc-800 w-full text-white rounded-md h-10 shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
             type="submit"
           >
             Send Email
-          </Button>
+          </EmailSubmitButton>
           </div>
         </form>
       </div>
