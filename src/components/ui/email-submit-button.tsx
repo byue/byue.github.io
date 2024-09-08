@@ -47,7 +47,7 @@ const EmailSubmitButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
                          disabled:cursor-not-allowed disabled:opacity-50
                          shadow-[0px_0px_1px_1px_var(--neutral-700)]
                          group-hover/input:shadow-none transition duration-400
-                         overflow-x-hidden inline-block resize-none`,
+                         inline-block resize-none`,
                          className
                     )}
           ref={ref}
