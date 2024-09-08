@@ -34,20 +34,22 @@ const EmailSubmitButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setVisible(true)}
         onMouseLeave={() => setVisible(false)}
-        className="p-[2px] rounded-lg transition duration-300 group/input"
+        className="p-[1px] rounded-lg transition duration-300 group/input"
       >
         <button
           type={type}
-          className={cn(
-            `flex-none h-10 w-full border-none bg-zinc-800 text-white shadow-input rounded-md px-3 text-sm  file:border-0 file:bg-transparent 
-          file:text-sm file:font-medium placeholder:text-neutral-400
-          focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-neutral-400
-           disabled:cursor-not-allowed disabled:opacity-50
-           shadow-[0px_0px_1px_1px_var(--neutral-700)]
-           group-hover/input:shadow-none transition duration-400 overflow-x-hidden inline-block resize-none
-           `,
-            className
-          )}
+          className={cn(`flex-none h-10 w-full border-none bg-zinc-800 text-white
+                         shadow-input rounded-md px-3 text-sm
+                         file:border-0 file:bg-transparent 
+                         file:text-sm file:font-medium placeholder:text-neutral-400
+                         focus-visible:outline-none focus-visible:ring-[2px]
+                         focus-visible:ring-neutral-400
+                         disabled:cursor-not-allowed disabled:opacity-50
+                         shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                         group-hover/input:shadow-none transition duration-400
+                         overflow-x-hidden inline-block resize-none`,
+                         className
+                    )}
           ref={ref}
           {...props}
         />
