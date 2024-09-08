@@ -42,6 +42,27 @@
         ]
     },
     {
+        "tabName": "Compute",
+        "tabImages": [
+            {
+                "name": "Lambda",
+                "image": "../images/lambda.png"
+            },
+            {
+                "name": "ECS",
+                "image": "../images/ecs.png"
+            },
+            {
+                "name": "EC2",
+                "image": "../images/ec2.png"
+            },
+            {
+                "name": "Kubernetes",
+                "image": "../images/kubernetes.png"
+            }
+        ]
+    },
+    {
         "tabName": "Storage",
         "tabImages": [
             {
