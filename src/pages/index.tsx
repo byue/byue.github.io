@@ -134,7 +134,7 @@ const IndexPage: React.FC<PageProps> = () => {
     <main id="home" style={pageStyles} className="bg-black">
       <div id="header" className="relative h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md mb-[4rem]">
         <ParticleLinks className="absolute w-full h-full"/>
-        <div id="nav_bar" className="flex flex-wrap justify-center space-x-4 mb-24">
+        <div id="nav_bar" className="flex flex-wrap justify-center space-x-4 mb-24 fixed top-[2rem] z-40">
           {tabData.map((element, index) => 
             <button id={element.buttonId}
               onClick={()=> scrollTo('#' + element.jumpId)}
@@ -145,7 +145,7 @@ const IndexPage: React.FC<PageProps> = () => {
             </button>
           )}
         </div>
-        <h1 id="main_page" className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative mx-auto w-full z-20">
+        <h1 id="main_page" className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative mx-auto w-full z-20 pt-[5rem]">
           Architech Solutions
         </h1>
         <div className="w-full sm:w-[24rem] md:w-[48rem] lg:w-[72rem] h-1 relative items-center justify-center">
@@ -162,10 +162,10 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* Radial gradient for the container to give a faded look */}
         <div id="aboutus" className="z-0 absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div className="z-10 bg-transparent column px-[11rem]">
-          <h1 className=" text-white text-[4rem] text-center font-medium mt-[22rem] mb-[2rem] pt:[40rem]">
+          <h1 className=" text-white text-[4rem] sm-text-[2rem] text-center font-medium mt-[11rem] mb-[2rem] relative">
             About Us
           </h1>
-          <div className="text-4xl pl-[2rem] mx-auto text-white text-left tracking-wider mb-[22rem] font-normal">
+          <div className="text-[2rem] pl-[2rem] mx-auto text-white text-left tracking-wider mb-[22rem] font-normal">
             At Architech Solutions, our mission is to provide businesses with expert software consulting
             that tailors to any customer requirement. We are dedicated to offering
             solutions that address unique business needs, foster rapid innovation, and support sustainable growth.
