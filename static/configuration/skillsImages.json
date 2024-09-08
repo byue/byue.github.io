@@ -1,5 +1,26 @@
 [
     {
+        "tabName": "Machine Learning",
+        "tabImages": [
+            {
+                "name": "PyTorch",
+                "image": "../images/pytorch.png"
+            },
+            {
+                "name": "ScikitLearn",
+                "image": "../images/scikit.png"
+            },
+            {
+                "name": "SageMaker",
+                "image": "../images/sagemaker.png"
+            },
+            {
+                "name": "Pandas",
+                "image": "../images/pandas.png"
+            }
+        ]
+    },
+    {
         "tabName": "Frontend",
         "tabImages": [
             {
