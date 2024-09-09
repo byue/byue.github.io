@@ -7,7 +7,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const EmailSubmitButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, type, disabled, ...props }, ref) => {
     const radius = 100; // change this to increase the rdaius of the hover effect
     const [visible, setVisible] = React.useState(false);
 
@@ -37,6 +37,7 @@ const EmailSubmitButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className="p-[1px] rounded-lg transition duration-300 group/input"
       >
         <button
+          disabled={disabled}
           type={type}
           className={cn(`flex-none h-10 w-full border-none bg-zinc-800 text-white
                          shadow-input rounded-md px-3 text-sm
