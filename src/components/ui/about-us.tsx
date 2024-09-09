@@ -19,7 +19,7 @@ export const AboutUs = () => {
         scale: scale
       }}
     >
-      <div id="aboutus" className="relative overflow-clip h-[55rem] w-full bg-black bg-dot-white/[0.3] relative flex items-center justify-center">
+      <div id="aboutus" className="relative overflow-clip h-[70rem] w-full bg-black bg-dot-white/[0.3] relative flex items-center justify-center">
         {/* Radial gradient for the container to give a faded look */}
         <div className="z-0 absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div className="z-10 bg-transparent column px-[11rem]">
