@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  NPM_CONFIG_LEGACY_PEER_DEPS: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
