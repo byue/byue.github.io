@@ -17,4 +17,4 @@ jobs:
         with:
           access-token: ${{ secrets.REPO_ACCESS_TOKEN }}
           deploy-branch: deploy
-          skip-publish: true
+          skip-publish: false
