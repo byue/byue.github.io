@@ -29,7 +29,7 @@ export const Contact = () => {
         Reach Out to Us
       </h2>
       <p className=" text-sm max-w-sm mt-2 text-neutral-300 font-light">
-        Have questions? Send us an email here!
+        Have questions? Send us an email to contact@architech-solutions.com here!
       </p>
       <Formik
         validateOnChange={false}
@@ -107,7 +107,7 @@ export const Contact = () => {
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
-        hideProgressBar={false}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         rtl={false}
