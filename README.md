@@ -63,14 +63,19 @@ Commands are run on "main" branch. Source files are on "main" branch. For deploy
 
     ```shell
     git add .
+    git commit -m <commit message>
     git push
     ```
 
-11. Once review is approved, code review can be merged into "main" branch.
+11. Once review is approved, code review can be merged into "main" branch. Remote branch is automatically deleted.
 
-12. Deploy changes to production site. This generates and commits static files to "deploy" branch.
+12. Deploy changes to production site. This is done automatically by github action when PR is merged in "main".
+    Emergency manual deployment can be done by doing the following on "main" after pulling latest changes into main:
 
     ```shell
+    git checkout main
+    git pull
+    npm run clean
     npm run deploy
     ```
 
@@ -79,6 +84,7 @@ Commands are run on "main" branch. Source files are on "main" branch. For deploy
     [Production Site](https://www.architech-solutions.com)
 
 ## 🥪 Stack
+- CI: [Github Action: Gatsby Publish](https://github.com/marketplace/actions/gatsby-publish)
 - Domain Registrar/DNS/Visit Metrics: [CloudFlare](https://www.cloudflare.com/)
 - Hosting: [GitHub Pages](https://pages.github.com/)
 - Frontend Meta Framework (SSG): [Gatsby](https://www.gatsbyjs.com/)
@@ -89,3 +95,4 @@ Commands are run on "main" branch. Source files are on "main" branch. For deploy
 - UI Components: [Aceternity](https://ui.aceternity.com/components)
 - Photo Assets: [Unplash](https://unsplash.com/)
 - Email Submission [Web3 Forms](https://web3forms.com/)
+- Form Validation [Formik](https://formik.org/docs)

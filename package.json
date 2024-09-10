@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "deploy": "rd /s /q .\\node_modules\\.cache\\gh-pages>nul 2>&1|echo.>nul && gatsby build && gh-pages -d public -b deploy",
+    "deploy": "rd /s /q .\\node_modules\\.cache\\gh-pages>nul 2>&1|echo.>nul && gatsby clean && gatsby build && gh-pages -d public -b deploy",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
