@@ -7,6 +7,9 @@ on:
 
 env:
   NPM_CONFIG_LEGACY_PEER_DEPS: true
+  NODE_ENV: production
+  GATSBY_WEB3_API_URL: https://api.web3forms.com/submit
+  GATSBY_WEB3_API_KEY: ${{ secrets.GATSBY_WEB3_API_KEY }}
 
 jobs:
   build:

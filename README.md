@@ -11,11 +11,14 @@ Commands are run on "main" branch. Source files are on "main" branch. For deploy
     git pull
     ```
 
-2. At the root project directory, create files .env.production and .env.development. Fill these with this content:
+2. For development, at the root project directory, create files .env.production and .env.development. Fill these with this content:
    ```
    GATSBY_WEB3_API_URL=https://api.web3forms.com/submit
    GATSBY_WEB3_API_KEY=<TOKEN>
    ```
+
+   For production, at Repo -> Settings -> Secrets and variables -> Actions, add GATSBY_WEB3_API_KEY (from [web3forms](https://web3forms.com/)),
+   and add REPO_ACCESS_TOKEN (from classic personal access token scoped with repo permissions in profile -> settings -> Developer settings -> Personal Access Tokens -> Tokens(classic) -> Generate new token (classic)).
 
 3. Install packages if needed
 
