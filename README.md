@@ -1,5 +1,7 @@
 <h1 align="center">Architech Solutions</h1>
 
+[![Production Deployment](https://github.com/byue/byue.github.io/actions/workflows/production-deployment.yml/badge.svg?branch=main)](https://github.com/byue/byue.github.io/actions/workflows/production-deployment.yml)
+
 ## Contribution Guidelines
 
 Commands are run on "main" branch. Source files are on "main" branch. For deployments, static file artifacts are written to "deploy" branch. Never commit directly to deploy branch, this is done automatically by deploy command.
