@@ -6,8 +6,10 @@ require("dotenv").config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Architech Solutions`,
-    siteUrl: `https://www.architech-solutions.com/`
+    title: `Architect Solutions - Tech Consulting`,
+    siteUrl: `https://www.architech-solutions.com/`,
+    description: 'Tech consulting firm for software, websites, and cybersecurity.',
+    keywords: 'Tech Consulting, Software Outsourcing, Custom Software Development, Website Development, React, Frontend, Backend, Fullstack, Software Consulting Services'
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
