@@ -7,21 +7,19 @@ export const AboutUsHeader = () => {
     offset: ["start end", "start start"],
     target: ref
   });
-  const opacity = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.9, 1], [0, 0, 1, 1, 0]);
   const translateX = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.5, 0.6, 0.75],
-    ["100%", "20%", "10%", "0%", "0%"]
+    [0, 0.1, 0.5, 0.6, 0.75],
+    ["50%", "10%", "0%", "0%", "0%"]
   );
   return (
     <motion.div
       ref={ref}
       style={{
         translateX: translateX,
-        opacity: opacity
       }}
     >
-      <h1 className="text-white text-[4rem] sm-text-[2rem] text-center font-medium mt-[11rem] mb-[2rem] relative">
+      <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-7xl text-white text-center font-light mt-[10vh] mb-[10vh] relative mx-auto">
         About Us
       </h1>
     </motion.div>

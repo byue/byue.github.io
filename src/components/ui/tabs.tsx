@@ -146,7 +146,7 @@ export const FadeInDiv = ({
                         <div className={`grid grid-cols-2 gap-2 w-full mx-auto rounded-2xl p-10 text-xl md:text-4xl -bold text-slate-500 bg-gradient-to-br from-white to-slate-700`}>   
                       {tab.tabImages.map((tabImage: any, index: number) => (
                         <div key={index} className="flex flex-col top-0 items-center">
-                          <h1 className="text-black text-3xl pb-[2rem] font-light">{tabImage.name}</h1>
+                          <h1 className="text-black text-3xl pb-[2rem] font-thin">{tabImage.name}</h1>
                           <GatsbyImage className="w-1/2 h-auto object-cover" image={getImage(tabImage.image)!} alt={tabImage.name}/>
                         </div>
                       ))}

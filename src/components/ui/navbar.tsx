@@ -46,7 +46,7 @@ export const NavBar = () => {
         <button id={element.buttonId}
             onClick={()=> scrollTo(
               '#' + element.jumpId,
-              element.jumpId === 'aboutus' || element.jumpId === 'services' ? 'center' : 'start',
+              element.jumpId === 'aboutus' || element.jumpId === 'services' || element.jumpId === 'contact' ? 'center' : 'start',
             )}
             className="flex-auto text-white bg-black min-w-fit relative h-[50px] sm:w-[5rem] md:w-[7rem] lg:w-[12rem] overflow-hidden rounded-full border-2 border-[#616467] px-3 text-white uppercase
                             font-light shadow-lg transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-10 before:h-full before:w-0 before:bg-sky-500 before:transition-all 
