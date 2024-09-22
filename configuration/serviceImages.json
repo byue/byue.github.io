@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Machine Learning",
+    "image": "../images/AI.jpg"
+  },
+  {
+    "name": "Cloud Development",
+    "image": "../images/Cloud Development.jpg"
+  },
+  {
+    "name": "Software Automation",
+    "image": "../images/Automation.jpg"
+  },
+  {
+    "name": "Mobile Development",
+    "image": "../images/Mobile Development.jpg"
+  },
+  {
+    "name": "Full-Stack Web Development",
+    "image": "../images/Web Development.jpg"
+  },
+  {
+    "name": "3D Modeling",
+    "image": "../images/3D Modeling.jpg"
+  }
+]
