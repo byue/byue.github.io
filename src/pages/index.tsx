@@ -7,8 +7,51 @@ import { HeroHeader } from "../components/ui/hero-header";
 import { AboutUs } from "../components/ui/about-us";
 import { NavBar } from "../components/ui/navbar";
 import { Contact } from "../components/ui/contact";
+import { useEffect } from "react";
 
 const IndexPage: React.FC<PageProps> = () => {
+    // Function to update the URL slug based on the section in view
+    const updateSlug = () => {
+      const sections = document.querySelectorAll<HTMLElement>("section");
+      let currentSectionId = "";
+  
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+          currentSectionId = section.id;
+        }
+      });
+  
+      // Update the URL slug if it changes
+      if (currentSectionId && window.location.hash.substring(1) !== currentSectionId) {
+        window.history.replaceState({}, "", `#${currentSectionId}`);
+        highlightActiveLink(currentSectionId);
+      }
+    };
+  
+    // Function to highlight the active link in the NavBar
+    const highlightActiveLink = (sectionId: string) => {
+      const links = document.querySelectorAll<HTMLAnchorElement>("nav a");
+      links.forEach((link) => {
+        link.classList.remove("active");
+      });
+  
+      const activeLink = document.getElementById(`link-${sectionId}`);
+      if (activeLink) {
+        activeLink.classList.add("active");
+      }
+    };
+  
+    // Attach the scroll listener when the component mounts
+    useEffect(() => {
+      const handleScroll = () => updateSlug();
+      window.addEventListener("scroll", handleScroll);
+  
+      // Cleanup on component unmount
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
   return (
     <main id="home"
           className="bg-black overflow-x-clip"
@@ -48,4 +91,9 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Architect Solutions - Tech Consulting</title>
+export const Head: HeadFC = () => (
+  <>
+    <title>Architect Solutions - Tech Consulting</title>
+    <meta name="description" content="Hello World" />
+  </>
+) 
