@@ -94,6 +94,6 @@ export default IndexPage
 export const Head: HeadFC = () => (
   <>
     <title>Architect Solutions - Tech Consulting</title>
-    <meta name="description" content="Hello World" />
+    <meta name="description" content="Simplifying Complex Problems with Expert Insight and Personalized Innovation." />
   </>
 ) 
