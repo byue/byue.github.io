@@ -1,0 +1,128 @@
+[
+    {
+        "tabName": "Machine Learning",
+        "tabImages": [
+            {
+                "name": "PyTorch",
+                "image": "../images/pytorch.png"
+            },
+            {
+                "name": "ScikitLearn",
+                "image": "../images/scikit.png"
+            },
+            {
+                "name": "SageMaker",
+                "image": "../images/sagemaker.png"
+            },
+            {
+                "name": "Pandas",
+                "image": "../images/pandas.png"
+            }
+        ]
+    },
+    {
+        "tabName": "Frontend",
+        "tabImages": [
+            {
+                "name": "React",
+                "image": "../images/react.png"
+            },
+            {
+                "name": "Tailwind CSS",
+                "image": "../images/tailwind.png"
+            },
+            {
+                "name": "Gatsby",
+                "image": "../images/gatsby.png"
+            },
+            {
+                "name": "Flutter",
+                "image": "../images/flutter.png"
+            }
+        ]
+    },
+    {
+        "tabName": "Backend",
+        "tabImages": [
+            {
+                "name": ".NET Core",
+                "image": "../images/dotnetcore.png"
+            },
+            {
+                "name": "Node.js",
+                "image": "../images/nodejs.png"
+            },
+            {
+                "name": "Spring Boot",
+                "image": "../images/springboot.png"
+            },
+            {
+                "name": "Flask",
+                "image": "../images/flask.png"
+            }
+        ]
+    },
+    {
+        "tabName": "Compute",
+        "tabImages": [
+            {
+                "name": "Lambda",
+                "image": "../images/lambda.png"
+            },
+            {
+                "name": "ECS",
+                "image": "../images/ecs.png"
+            },
+            {
+                "name": "EC2",
+                "image": "../images/ec2.png"
+            },
+            {
+                "name": "Kubernetes",
+                "image": "../images/kubernetes.png"
+            }
+        ]
+    },
+    {
+        "tabName": "Storage",
+        "tabImages": [
+            {
+                "name": "SQL",
+                "image": "../images/sql.png"
+            },
+            {
+                "name": "DynamoDB",
+                "image": "../images/dynamodb.png"
+            },
+            {
+                "name": "S3",
+                "image": "../images/s3.png"
+            },
+            {
+                "name": "Redis",
+                "image": "../images/redis.png"
+            }
+        ]
+    },
+    {
+        "tabName": "3D Design",
+        "tabImages": [
+            {
+                "name": "Rhinoceros",
+                "image": "../images/rhino.png"
+            },
+            {
+                "name": "3ds Max",
+                "image": "../images/3dsmax.png"
+            },
+            {
+                "name": "SolidWorks",
+                "image": "../images/solidworks.png"
+            },
+            {
+                "name": "Maya",
+                "image": "../images/maya.png"
+            }
+        ]
+    }
+]
