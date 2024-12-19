@@ -57,28 +57,40 @@ const IndexPage: React.FC<PageProps> = () => {
           className="bg-black overflow-x-clip"
           style={{color: "#232129", fontFamily: "Montserrat"}}>
       <NavBar/>
-      <HeroHeader/>
-      <AboutUs/>
+      <section id="home">
+        <HeroHeader/>
+      </section>
+      <section id="about-us">
+        <AboutUs/>
+      </section>
+
       <div id="timeline" className="id=timeline w-full h-screen bg-black">
         <Timeline data={[
           {
             title: "Services",
             content: (
-              <FocusCards />
+              <section id="services">
+                <FocusCards />
+              </section>
             ),
           },
           {
             title: "Skills",
             content: (
-              <div id="skills" className="mb-[60rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full items-start justify-start">
-                <Tabs />
-              </div>
+              <section id="skills">
+                <div id="skills" className="mb-[60rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full items-start justify-start">
+                  <Tabs />
+                </div>
+              </section>
             ),
           },
           {
             title: "Contact",
             content: (
-              <Contact/>
+              <section id="contact-us">
+                <Contact/>
+              </section>
+
             ),
           },
         ]} 
