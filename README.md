@@ -1,4 +1,4 @@
-# Editorial Portfolio - Bryan Yue
+# Software Portfolio - Bryan Yue
 
 Single-page editorial magazine style portfolio built with React + TypeScript + Vite + Tailwind CSS + Framer Motion.
 
