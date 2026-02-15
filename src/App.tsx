@@ -27,8 +27,6 @@ function App() {
     (entry): entry is ProjectEntry => entry.id === activeProjectId,
   );
 
-  const backgroundImage = profile.images[profile.theme.backgroundImageId];
-
   useEffect(() => {
     if (!activeProject) {
       return undefined;
@@ -69,16 +67,8 @@ function App() {
   };
 
   return (
-    <div
-      className="relative bg-[var(--paper)] text-[var(--ink)]"
-      style={{
-        backgroundImage: `linear-gradient(rgba(247, 243, 235, 0.92), rgba(247, 243, 235, 0.92)), url(${backgroundImage.url})`,
-        backgroundAttachment: reducedMotion ? "scroll" : "fixed",
-        backgroundPosition: "center top",
-        backgroundSize: "cover",
-      }}
-    >
-      <header className="sticky top-0 z-40 border-b border-[var(--rule)] bg-[color:rgba(247,243,235,0.88)] shadow-[0_1px_8px_rgba(20,20,20,0.04)] backdrop-blur-sm">
+    <div className="relative bg-[var(--paper)] text-[var(--ink)]">
+      <header className="sticky top-0 z-40 border-b border-[var(--rule)] bg-[color:rgba(255,255,255,0.95)] shadow-[0_1px_8px_rgba(20,20,20,0.04)] backdrop-blur-sm">
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-3 md:px-10">
           <div>
             <p className="kicker">{profile.masthead.title}</p>
@@ -120,7 +110,7 @@ function App() {
             <motion.nav
               id="mobile-menu"
               aria-label="Mobile"
-              className="absolute inset-x-0 top-full border-b border-[var(--rule)] bg-[color:rgba(247,243,235,0.96)] shadow-[0_8px_20px_rgba(20,20,20,0.08)] lg:hidden"
+              className="absolute inset-x-0 top-full border-b border-[var(--rule)] bg-[color:rgba(255,255,255,0.97)] shadow-[0_8px_20px_rgba(20,20,20,0.08)] lg:hidden"
               initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: -8 }}
               animate={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
               exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
@@ -185,7 +175,7 @@ function App() {
 
             <Reveal className="col-span-12 lg:col-span-7" delay={0.08}>
               <figure className="relative">
-                <div className="relative overflow-hidden border border-[var(--rule)] bg-neutral-200">
+                <div className="relative overflow-hidden panel-frame bg-neutral-200">
                   <motion.img
                     src={profile.images[profile.hero.imagePrimaryId].url}
                     alt={profile.images[profile.hero.imagePrimaryId].alt}
@@ -248,7 +238,7 @@ function App() {
             <div className="mt-10 grid gap-5 md:grid-cols-3">
               {profile.about.impactBlocks.map((block, index) => (
                 <Reveal key={block.title} delay={index * 0.05}>
-                  <article className="h-full border border-[var(--rule)] bg-white p-5">
+                  <article className="h-full panel-frame bg-white p-5">
                     <p className="font-serif text-3xl leading-none">{block.metric}</p>
                     <p className="mt-2 text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{block.title}</p>
                     <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{block.note}</p>
@@ -260,7 +250,7 @@ function App() {
           </div>
         </section>
 
-        <section id={profile.experience.id} className="border-y border-[var(--rule)] bg-white py-20">
+        <section id={profile.experience.id} className="border-t border-[var(--rule)] bg-white py-20">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
             <Reveal>
               <p className="kicker">{profile.experience.kicker}</p>
@@ -272,68 +262,71 @@ function App() {
               {profile.experience.chapters.map((chapter, index) => {
                 return (
                   <Reveal key={chapter.id} delay={index * 0.02}>
-                    <article className="grid border-b border-[var(--rule)] py-10 lg:grid-cols-[1fr_320px] lg:gap-8">
-                      <div>
-                        <div className="flex flex-wrap items-start gap-4">
-                          <div>
-                            <h3 className="font-serif text-3xl leading-tight">{chapter.role}</h3>
-                            <p className="mt-1 text-lg">{chapter.company}</p>
-                            <p className="mt-3 text-sm uppercase tracking-[0.14em] text-[var(--muted)]">
-                              {chapter.dateRange} | {chapter.location}
-                            </p>
+                    <>
+                      <article className="grid py-10 lg:grid-cols-[1fr_320px] lg:gap-8">
+                        <div>
+                          <div className="flex flex-wrap items-start gap-4">
+                            <div>
+                              <h3 className="font-serif text-3xl leading-tight">{chapter.role}</h3>
+                              <p className="mt-1 text-lg">{chapter.company}</p>
+                              <p className="mt-3 text-sm uppercase tracking-[0.14em] text-[var(--muted)]">
+                                {chapter.dateRange} | {chapter.location}
+                              </p>
+                            </div>
                           </div>
-                        </div>
 
-                        <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--muted)]">{chapter.summary}</p>
+                          <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--muted)]">{chapter.summary}</p>
 
-                        <motion.ul
-                          className="mt-5 list-disc space-y-3 pl-5 pr-2 marker:text-[var(--accent)]"
-                          initial={reducedMotion ? "visible" : "hidden"}
-                          whileInView="visible"
-                          viewport={{ once: true, amount: 0.35 }}
-                          variants={{
-                            hidden: reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 },
-                            visible: {
-                              opacity: 1,
-                              y: 0,
-                              transition: {
-                                duration: reducedMotion ? 0.01 : 0.4,
-                                ease: [0.22, 1, 0.36, 1],
-                                staggerChildren: reducedMotion ? 0 : 0.07,
-                                delayChildren: reducedMotion ? 0 : 0.08,
-                              },
-                            },
-                          }}
-                        >
-                          {chapter.highlights.map((highlight) => (
-                            <motion.li
-                              key={highlight}
-                              className="text-[15px] leading-7 text-[var(--muted)]"
-                              variants={{
-                                hidden: reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 },
-                                visible: {
-                                  opacity: 1,
-                                  y: 0,
-                                  transition: { duration: reducedMotion ? 0.01 : 0.35, ease: [0.22, 1, 0.36, 1] },
+                          <motion.ul
+                            className="mt-5 list-disc space-y-3 pl-5 pr-2 marker:text-[var(--accent)]"
+                            initial={reducedMotion ? "visible" : "hidden"}
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.35 }}
+                            variants={{
+                              hidden: reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 },
+                              visible: {
+                                opacity: 1,
+                                y: 0,
+                                transition: {
+                                  duration: reducedMotion ? 0.01 : 0.4,
+                                  ease: [0.22, 1, 0.36, 1],
+                                  staggerChildren: reducedMotion ? 0 : 0.07,
+                                  delayChildren: reducedMotion ? 0 : 0.08,
                                 },
-                              }}
-                            >
-                              {highlight}
-                            </motion.li>
-                          ))}
-                        </motion.ul>
-                      </div>
-
-                      <aside className="mt-8 lg:mt-0 lg:border-l lg:border-[var(--rule)] lg:pl-6">
-                        <div className="flex flex-wrap gap-2">
-                          {chapter.techUsed.map((tech) => (
-                            <span key={tech} className="metadata-chip">
-                              {tech}
-                            </span>
-                          ))}
+                              },
+                            }}
+                          >
+                            {chapter.highlights.map((highlight) => (
+                              <motion.li
+                                key={highlight}
+                                className="text-[15px] leading-7 text-[var(--muted)]"
+                                variants={{
+                                  hidden: reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 },
+                                  visible: {
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: { duration: reducedMotion ? 0.01 : 0.35, ease: [0.22, 1, 0.36, 1] },
+                                  },
+                                }}
+                              >
+                                {highlight}
+                              </motion.li>
+                            ))}
+                          </motion.ul>
                         </div>
-                      </aside>
-                    </article>
+
+                        <aside className="mt-8 lg:mt-0 lg:border-l lg:border-[var(--rule)] lg:border-l-[1px] lg:pl-6">
+                          <div className="flex flex-wrap gap-2">
+                            {chapter.techUsed.map((tech) => (
+                              <span key={tech} className="metadata-chip">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </aside>
+                      </article>
+                      <div className="h-px bg-[var(--rule)]" />
+                    </>
                   </Reveal>
                 );
               })}
@@ -357,7 +350,7 @@ function App() {
                   <button
                     type="button"
                     onClick={() => setActiveProjectId(project.id)}
-                    className="group flex h-full w-full flex-col border border-[var(--rule)] bg-white text-left transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(20,20,20,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                    className="group panel-frame flex h-full w-full flex-col bg-white text-left transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(20,20,20,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                   >
                     <div className="overflow-hidden">
                       <motion.img
@@ -468,7 +461,7 @@ function App() {
           </Reveal>
 
           <Reveal className="mt-8">
-            <div className="relative overflow-hidden border border-[var(--rule)] bg-black text-white">
+            <div className="relative overflow-hidden panel-frame bg-black text-white">
               <motion.img
                 src={profile.images[profile.contact.imageId].url}
                 alt={profile.images[profile.contact.imageId].alt}
@@ -536,7 +529,7 @@ function App() {
               role="dialog"
               aria-modal="true"
               aria-label={`${activeProject.title} case study`}
-              className="max-h-[94vh] w-full max-w-5xl overflow-y-auto border border-[var(--rule)] bg-[var(--paper)] p-6 md:p-10"
+              className="panel-frame max-h-[94vh] w-full max-w-5xl overflow-y-auto bg-[var(--paper)] p-6 md:p-10"
               initial={reducedMotion ? { opacity: 1 } : { y: 24, opacity: 0 }}
               animate={reducedMotion ? { opacity: 1 } : { y: 0, opacity: 1 }}
               exit={reducedMotion ? { opacity: 0 } : { y: 16, opacity: 0 }}
@@ -566,7 +559,7 @@ function App() {
 
               <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_240px]">
                 <div>
-                  <div className="overflow-hidden border border-[var(--rule)]">
+                  <div className="panel-frame overflow-hidden">
                     <img
                       src={profile.images[activeProject.imageId].url}
                       alt={profile.images[activeProject.imageId].alt}
@@ -597,7 +590,7 @@ function App() {
                   </div>
                 </div>
 
-                <aside className="border border-[var(--rule)] bg-white p-5">
+                <aside className="panel-frame bg-white p-5">
                   <p className="kicker">{profile.ui.keyNumbersLabel}</p>
                   <div className="mt-4 space-y-5">
                     {activeProject.keyNumbers.map((item) => (
