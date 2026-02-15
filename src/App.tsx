@@ -13,12 +13,15 @@ function App() {
 
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const resumeEntry = profile.navigation.find((item) => item.kind === "asset" && item.id === "resume");
   const rawResumeHref = resumeEntry?.href ?? "resume.pdf";
   const resumeHref = /^https?:\/\//.test(rawResumeHref)
     ? rawResumeHref
     : `${import.meta.env.BASE_URL}${rawResumeHref}`;
+  const resolveAssetHref = (href: string) =>
+    /^https?:\/\//.test(href) ? href : `${import.meta.env.BASE_URL}${href}`;
 
   const activeProject = profile.projects.entries.find(
     (entry): entry is ProjectEntry => entry.id === activeProjectId,
@@ -82,34 +85,75 @@ function App() {
             <p className="font-serif text-sm tracking-[0.06em]">{profile.masthead.issue}</p>
           </div>
 
-          <nav aria-label="Main" className="hidden items-center gap-5 lg:flex">
-            {profile.navigation.map((item) =>
-              item.kind === "section" ? (
-                <a key={item.id} className="editorial-link nav-link" href={`#${item.id}`}>
-                  {item.label}
-                </a>
-              ) : (
-                <a
-                  key={item.id}
-                  className="editorial-link nav-link"
-                  href={
-                    /^https?:\/\//.test(item.href)
-                      ? item.href
-                      : `${import.meta.env.BASE_URL}${item.href}`
-                  }
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {item.label}
-                </a>
-              ),
-            )}
-          </nav>
+	          <nav aria-label="Main" className="hidden items-center gap-5 lg:flex">
+	            {profile.navigation.map((item) =>
+	              item.kind === "section" ? (
+	                <a key={item.id} className="editorial-link nav-link" href={`#${item.id}`}>
+	                  {item.label}
+	                </a>
+	              ) : (
+	                <a
+	                  key={item.id}
+	                  className="editorial-link nav-link"
+	                  href={resolveAssetHref(item.href)}
+	                  target="_blank"
+	                  rel="noreferrer"
+	                >
+	                  {item.label}
+	                </a>
+	              ),
+	            )}
+	          </nav>
 
-          <a className="editorial-link nav-link text-xs lg:hidden" href="#about">
-            {profile.ui.menuLabel}
-          </a>
+	          <button
+	            type="button"
+	            className="toggle-button text-xs lg:hidden"
+	            aria-expanded={mobileMenuOpen}
+	            aria-controls="mobile-menu"
+	            onClick={() => setMobileMenuOpen((open) => !open)}
+	          >
+            {mobileMenuOpen ? profile.ui.closeLabel : profile.ui.menuLabel}
+          </button>
         </div>
+        <AnimatePresence>
+          {mobileMenuOpen ? (
+            <motion.nav
+              id="mobile-menu"
+              aria-label="Mobile"
+              className="absolute inset-x-0 top-full border-b border-[var(--rule)] bg-[color:rgba(247,243,235,0.96)] shadow-[0_8px_20px_rgba(20,20,20,0.08)] lg:hidden"
+              initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: -8 }}
+              animate={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
+              transition={{ duration: reducedMotion ? 0.01 : 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-6 py-4 md:px-10">
+                {profile.navigation.map((item) =>
+                  item.kind === "section" ? (
+                    <a
+                      key={item.id}
+                      className="editorial-link nav-link"
+                      href={`#${item.id}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <a
+                      key={item.id}
+                      className="editorial-link nav-link"
+                      href={resolveAssetHref(item.href)}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ),
+                )}
+              </div>
+            </motion.nav>
+          ) : null}
+        </AnimatePresence>
       </header>
 
       <main>
