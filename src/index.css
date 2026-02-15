@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,50&family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f7f3eb;
+  --paper-soft: #f3eee4;
+  --ink: #161311;
+  --muted: #615a53;
+  --rule: #d4ccc0;
+  --accent: #8f5d3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Instrument Sans", "Segoe UI", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E");
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+  z-index: 30;
+}
+
+#root {
+  isolation: isolate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer components {
+  .kicker {
+    @apply text-[11px] uppercase tracking-[0.2em] text-[var(--muted)];
+  }
+
+  .caption {
+    @apply text-[11px] uppercase tracking-[0.14em] text-[var(--muted)];
+  }
+
+  .editorial-link {
+    @apply relative inline-block text-[var(--ink)] no-underline transition;
+  }
+
+  .editorial-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.08rem;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .editorial-link:hover::after,
+  .editorial-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link {
+    @apply text-xs uppercase tracking-[0.15em] text-[var(--ink)];
+  }
+
+  .metadata-chip {
+    @apply inline-flex items-center border border-[var(--rule)] bg-[color:rgba(255,255,255,0.56)] px-3 py-1.5 text-[11px] uppercase tracking-[0.15em] text-[var(--ink)];
+  }
+
+  .cta-primary {
+    @apply inline-flex items-center border border-[var(--ink)] bg-[var(--ink)] px-5 py-2.5 text-[11px] uppercase tracking-[0.18em] text-[var(--paper)] transition hover:bg-transparent hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)];
+  }
+
+  .cta-primary.inverted {
+    @apply border-[var(--paper)] bg-[var(--paper)] text-[var(--ink)] hover:bg-transparent hover:text-[var(--paper)];
+  }
+
+  .cta-secondary {
+    @apply inline-flex items-center border border-white/60 px-5 py-2.5 text-[11px] uppercase tracking-[0.18em] text-white transition hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white;
+  }
+
+  .toggle-button {
+    @apply inline-flex items-center border border-[var(--rule)] px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-[var(--ink)] transition hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)];
+  }
+
+  .drop-cap:first-letter {
+    float: left;
+    font-family: "Fraunces", "Times New Roman", serif;
+    font-size: 3.1rem;
+    line-height: 0.9;
+    padding-right: 0.34rem;
+    padding-top: 0.25rem;
+    color: var(--accent);
+  }
+
+}
