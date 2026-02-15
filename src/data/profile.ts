@@ -91,7 +91,7 @@ export const profile = {
     kicker: "Cover Feature",
     deck:
       "Proven in production: reduced mitigation latency from minutes to seconds and increased cloud control-plane throughput by 8x.",
-    metadata: ["Machine Learning", "Software Engineering", "System Design", "Cross-Team Leadership", "Strategic Planning", "FAANG", "Technical Vision", "Mentorship", "AWS", "Azure"],
+    metadata: ["Machine Learning Engineer", "AI", "Software Engineer", "Software Developer", "Machine Learning", "Software Engineering", "System Design", "Cross-Team Leadership", "Strategic Planning", "FAANG", "Technical Vision", "Mentorship", "AWS", "Azure"],
     primaryCtaLabel: "Download Resume",
     imagePrimaryId: "hero_primary",
     imageSecondaryId: "hero_secondary",

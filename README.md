@@ -31,26 +31,6 @@ All site content is centralized in:
 
 Update personal info, experience, projects, publications, skills, and image attributions there. Components render from this data file only.
 
-## Resume File
-
-A placeholder resume is included at:
-
-- `public/resume.pdf`
-
-Replace it with the real resume PDF while keeping the same filename.
-
-## GitHub Pages Base Path
-
-Vite base path is configured in `vite.config.ts`:
-
-- Production build uses:
-- `/` for user-site repos (for example: `byue.github.io`) and custom domains
-- `/${REPO_NAME}/` for project-site repos
-
-You can override base explicitly with:
-
-- `VITE_BASE_PATH=/custom/base/`
-
 ## Deploy to GitHub Pages
 
 Workflow file:
@@ -64,13 +44,13 @@ It deploys on every push to `main`.
 1. Go to repository `Settings -> Pages`.
 2. Under `Build and deployment`, set `Source` to `GitHub Actions`.
 3. Under `Custom domain`, set:
-   - `www.architech-solutions.com`
+   - `www.bryanyue.com`
 
 ### Verify deployment
 
 1. Push to `main`.
 2. Wait for `Deploy to GitHub Pages` workflow to finish.
-3. Open `https://www.architech-solutions.com/`.
+3. Open `https://www.bryanyue.com/`.
 
 ## Notes
 
