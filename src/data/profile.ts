@@ -135,7 +135,7 @@ export const profile = {
       {
         id: "amazon-2026",
         kicker: "Chapter 05",
-        company: "Amazon Sponsored Product Ads",
+        company: "Amazon | Sponsored Product Ads Search Relevance",
         role: "Machine Learning Engineer",
         dateRange: "January 2026-Present",
         location: "Seattle, WA",
@@ -164,7 +164,7 @@ export const profile = {
       {
         id: "aws-2021",
         kicker: "Chapter 04",
-        company: "AWS Shield",
+        company: "Amazon | AWS Shield",
         role: "Software Developer",
         dateRange: "November 2021-January 2026",
         location: "Seattle, WA",
@@ -204,7 +204,7 @@ export const profile = {
       {
         id: "microsoft-2019",
         kicker: "Chapter 03",
-        company: "Microsoft AzureStack Compute",
+        company: "Microsoft | AzureStack Compute",
         role: "Software Developer",
         dateRange: "October 2019-November 2021",
         location: "Redmond, WA",
@@ -239,7 +239,7 @@ export const profile = {
       {
         id: "bloomberg-2018",
         kicker: "Chapter 02",
-        company: "Bloomberg LP",
+        company: "Bloomberg LP | TickerPlant",
         role: "Software Developer",
         dateRange: "September 2018-September 2019",
         location: "New York City",
@@ -264,7 +264,7 @@ export const profile = {
       {
         id: "kernel-2018",
         kicker: "Chapter 01",
-        company: "Kernel Labs",
+        company: "Kernel Labs | Incubator",
         role: "Machine Learning Engineer Intern",
         dateRange: "March 2018-June 2018",
         location: "Seattle, WA",
