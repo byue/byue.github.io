@@ -72,7 +72,7 @@ function App() {
     <div
       className="relative bg-[var(--paper)] text-[var(--ink)]"
       style={{
-        backgroundImage: `linear-gradient(rgba(247, 243, 235, 0.9), rgba(247, 243, 235, 0.94)), url(${backgroundImage.url})`,
+        backgroundImage: `linear-gradient(rgba(247, 243, 235, 0.92), rgba(247, 243, 235, 0.92)), url(${backgroundImage.url})`,
         backgroundAttachment: reducedMotion ? "scroll" : "fixed",
         backgroundPosition: "center top",
         backgroundSize: "cover",
