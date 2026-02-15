@@ -26,7 +26,7 @@ export function ImageFigure({
           className={imageClassName}
           initial={reducedMotion ? { opacity: 1 } : { opacity: 0, scale: 1.02 }}
           whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: reducedMotion ? 0.01 : 0.8, ease: [0.22, 1, 0.36, 1] }}
           whileHover={reducedMotion ? undefined : { scale: 1.02 }}
         />

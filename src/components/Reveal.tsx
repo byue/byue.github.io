@@ -10,28 +10,24 @@ type RevealProps = {
 
 export function Reveal({ children, className, delay = 0, y = 28 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: "-12% 0px" });
+  const inView = useInView(ref, { once: false, margin: "-12% 0px" });
   const reducedMotion = useReducedMotion();
+  const hiddenState = reducedMotion
+    ? { opacity: 1, y: 0, filter: "blur(0px)", clipPath: "inset(0 0 0% 0)" }
+    : {
+        opacity: 0,
+        y,
+        filter: "blur(10px)",
+        clipPath: "inset(0 0 100% 0)",
+      };
+  const visibleState = { opacity: 1, y: 0, filter: "blur(0px)", clipPath: "inset(0 0 0% 0)" };
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={
-        reducedMotion
-          ? { opacity: 1 }
-          : {
-              opacity: 0,
-              y,
-              filter: "blur(10px)",
-              clipPath: "inset(0 0 100% 0)",
-            }
-      }
-      animate={
-        inView || reducedMotion
-          ? { opacity: 1, y: 0, filter: "blur(0px)", clipPath: "inset(0 0 0% 0)" }
-          : undefined
-      }
+      initial={hiddenState}
+      animate={inView ? visibleState : hiddenState}
       transition={{
         duration: reducedMotion ? 0.01 : 0.85,
         delay: reducedMotion ? 0 : delay,

@@ -281,7 +281,7 @@ function App() {
                             className="mt-5 list-disc space-y-3 pl-5 pr-2 marker:text-[var(--accent)]"
                             initial={reducedMotion ? "visible" : "hidden"}
                             whileInView="visible"
-                            viewport={{ once: true, amount: 0.35 }}
+                            viewport={{ once: false, amount: 0.35 }}
                             variants={{
                               hidden: reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 },
                               visible: {
