@@ -1,4 +1,4 @@
-import profileImage from "../assets/Profile.webp";
+const profileImage = `${import.meta.env.BASE_URL}Profile.webp`;
 
 export type PhotoAsset = {
   id: string;
