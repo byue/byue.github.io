@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Instrument Sans", "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ["Fraunces", "ui-serif", "Georgia", "serif"],
+        sans: ["Instrument Sans Variable", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["Fraunces Variable", "ui-serif", "Georgia", "serif"],
       },
     },
   },

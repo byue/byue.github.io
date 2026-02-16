@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,50&family=Instrument+Sans:wght@400;500;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,7 +22,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  font-family: "Instrument Sans", "Segoe UI", sans-serif;
+  font-family: "Instrument Sans Variable", "Segoe UI", sans-serif;
   background: var(--paper);
   color: var(--ink);
   text-rendering: optimizeLegibility;
@@ -109,7 +107,7 @@ body {
 
   .drop-cap:first-letter {
     float: left;
-    font-family: "Fraunces", "Times New Roman", serif;
+    font-family: "Fraunces Variable", "Times New Roman", serif;
     font-size: 3.1rem;
     line-height: 0.9;
     padding-right: 0.34rem;

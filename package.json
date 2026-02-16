@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/fraunces": "^5.2.9",
+    "@fontsource-variable/instrument-sans": "^5.2.8",
     "framer-motion": "^12.34.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
