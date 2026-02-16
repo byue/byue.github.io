@@ -511,20 +511,6 @@ function App() {
                           <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{project.year}</p>
                         </div>
                         <p className="text-sm leading-7 text-[var(--muted)]">{project.caption}</p>
-
-                        <motion.div
-                          className="mt-auto flex flex-wrap gap-2"
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: false, amount: 0.35 }}
-                          variants={chipListVariants}
-                        >
-                          {project.tags.map((tag) => (
-                            <motion.span key={tag} className="metadata-chip" variants={chipVariants}>
-                              {tag}
-                            </motion.span>
-                          ))}
-                        </motion.div>
                       </div>
                     </button>
                   </Reveal>
