@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } fr
 import { EditorialRule } from "./components/EditorialRule";
 import { Reveal } from "./components/Reveal";
 import { profile } from "./data/profile";
+import { getResponsiveImageProps } from "./utils/images";
 
 type ProjectEntry = (typeof profile.projects.entries)[number];
 
@@ -26,6 +27,29 @@ function App() {
   const activeProject = profile.projects.entries.find(
     (entry): entry is ProjectEntry => entry.id === activeProjectId,
   );
+  const heroImage = profile.images[profile.hero.imagePrimaryId];
+  const heroImageProps = getResponsiveImageProps(heroImage.url, {
+    sizes: "(min-width: 1400px) 760px, (min-width: 1024px) 56vw, (min-width: 768px) 90vw, 92vw",
+    widths: [640, 768, 960, 1200, 1440, 1800, 2200],
+    defaultWidth: 1440,
+    quality: 70,
+  });
+  const contactImage = profile.images[profile.contact.imageId];
+  const contactImageProps = getResponsiveImageProps(contactImage.url, {
+    sizes: "(min-width: 1400px) 1280px, 92vw",
+    widths: [640, 768, 960, 1200, 1440, 1800, 2200],
+    defaultWidth: 1400,
+    quality: 68,
+  });
+  const activeProjectImage = activeProject ? profile.images[activeProject.imageId] : null;
+  const activeProjectImageProps = activeProjectImage
+    ? getResponsiveImageProps(activeProjectImage.url, {
+        sizes: "(min-width: 1024px) 700px, 92vw",
+        widths: [480, 640, 768, 960, 1200, 1400],
+        defaultWidth: 960,
+        quality: 62,
+      })
+    : null;
 
   useEffect(() => {
     if (!activeProject) {
@@ -177,10 +201,14 @@ function App() {
               <figure className="relative">
                 <div className="relative overflow-hidden panel-frame bg-neutral-200">
                   <motion.img
-                    src={profile.images[profile.hero.imagePrimaryId].url}
-                    alt={profile.images[profile.hero.imagePrimaryId].alt}
+                    src={heroImageProps.src}
+                    srcSet={heroImageProps.srcSet}
+                    sizes={heroImageProps.sizes}
+                    alt={heroImage.alt}
                     className="h-[62vh] w-full object-cover object-center md:h-[72vh]"
                     loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                     style={reducedMotion ? undefined : { y: heroParallaxY }}
                     animate={
                       reducedMotion
@@ -201,7 +229,7 @@ function App() {
                   />
                 </div>
                 <figcaption className="caption mt-3">
-                  {profile.images[profile.hero.imagePrimaryId].caption}
+                  {heroImage.caption}
                 </figcaption>
               </figure>
             </Reveal>
@@ -345,6 +373,13 @@ function App() {
           <div className="mt-10 grid gap-8 md:grid-cols-2">
             {profile.projects.entries.map((project, index) => {
               const image = profile.images[project.imageId];
+              const projectImageProps = getResponsiveImageProps(image.url, {
+                sizes: "(min-width: 1400px) 620px, (min-width: 768px) 44vw, 92vw",
+                widths: [360, 480, 640, 768, 960, 1200, 1400],
+                defaultWidth: 768,
+                quality: 62,
+              });
+
               return (
                 <Reveal key={project.id} className="h-full" delay={index * 0.04}>
                   <button
@@ -354,8 +389,12 @@ function App() {
                   >
                     <div className="overflow-hidden">
                       <motion.img
-                        src={image.url}
+                        src={projectImageProps.src}
+                        srcSet={projectImageProps.srcSet}
+                        sizes={projectImageProps.sizes}
                         alt={image.alt}
+                        loading="lazy"
+                        decoding="async"
                         className="h-[320px] w-full object-cover"
                         whileHover={reducedMotion ? undefined : { scale: 1.03 }}
                         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -463,8 +502,12 @@ function App() {
           <Reveal className="mt-8">
             <div className="relative overflow-hidden panel-frame bg-black text-white">
               <motion.img
-                src={profile.images[profile.contact.imageId].url}
-                alt={profile.images[profile.contact.imageId].alt}
+                src={contactImageProps.src}
+                srcSet={contactImageProps.srcSet}
+                sizes={contactImageProps.sizes}
+                alt={contactImage.alt}
+                loading="lazy"
+                decoding="async"
                 className="h-[58vh] w-full object-cover md:h-[66vh]"
                 animate={
                   reducedMotion
@@ -560,11 +603,17 @@ function App() {
               <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_240px]">
                 <div>
                   <div className="panel-frame overflow-hidden">
-                    <img
-                      src={profile.images[activeProject.imageId].url}
-                      alt={profile.images[activeProject.imageId].alt}
-                      className="h-[320px] w-full object-cover"
-                    />
+                    {activeProjectImage && activeProjectImageProps ? (
+                      <img
+                        src={activeProjectImageProps.src}
+                        srcSet={activeProjectImageProps.srcSet}
+                        sizes={activeProjectImageProps.sizes}
+                        alt={activeProjectImage.alt}
+                        loading="eager"
+                        decoding="async"
+                        className="h-[320px] w-full object-cover"
+                      />
+                    ) : null}
                   </div>
                   <div className="mt-8 space-y-8">
                     <div>

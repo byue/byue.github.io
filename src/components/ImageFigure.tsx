@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { PhotoAsset } from "../data/profile";
+import { getResponsiveImageProps } from "../utils/images";
 
 type ImageFigureProps = {
   image: PhotoAsset;
@@ -15,14 +16,24 @@ export function ImageFigure({
   priority = false,
 }: ImageFigureProps) {
   const reducedMotion = useReducedMotion();
+  const responsiveImageProps = getResponsiveImageProps(image.url, {
+    sizes: "(min-width: 1024px) 34vw, (min-width: 768px) 46vw, 92vw",
+    widths: [360, 480, 640, 768, 960, 1200],
+    defaultWidth: 768,
+    quality: 62,
+  });
 
   return (
     <figure className={className}>
       <div className="group overflow-hidden bg-neutral-200">
         <motion.img
-          src={image.url}
+          src={responsiveImageProps.src}
+          srcSet={responsiveImageProps.srcSet}
+          sizes={responsiveImageProps.sizes}
           alt={image.alt}
           loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          fetchPriority={priority ? "high" : "auto"}
           className={imageClassName}
           initial={reducedMotion ? { opacity: 1 } : { opacity: 0, scale: 1.02 }}
           whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
