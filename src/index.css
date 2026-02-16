@@ -111,6 +111,18 @@ svg {
     @apply inline-flex items-center border border-[var(--rule)] border-[1px] px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-[var(--ink)] transition hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)];
   }
 
+  .page-gutter {
+    padding-left: max(1.75rem, env(safe-area-inset-left));
+    padding-right: max(1.75rem, env(safe-area-inset-right));
+  }
+
+  @media (min-width: 768px) {
+    .page-gutter {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
   .panel-frame {
     @apply border border-transparent;
     box-shadow: inset 0 0 0 1px var(--rule);

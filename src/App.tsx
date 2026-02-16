@@ -93,7 +93,7 @@ function App() {
   return (
     <div className="relative overflow-x-hidden bg-[var(--paper)] text-[var(--ink)]">
       <header className="sticky top-0 z-40 border-b border-[var(--rule)] bg-[color:rgba(255,255,255,0.95)] shadow-[0_1px_8px_rgba(20,20,20,0.04)] backdrop-blur-sm">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-3 md:px-10">
+        <div className="page-gutter mx-auto flex max-w-[1400px] items-center justify-between gap-6 py-3">
           <div className="min-w-0">
             <p className="kicker">{profile.masthead.title}</p>
             <p className="font-serif text-sm tracking-[0.06em]">{profile.masthead.issue}</p>
@@ -140,7 +140,7 @@ function App() {
               exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
               transition={{ duration: reducedMotion ? 0.01 : 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-6 py-4 md:px-10">
+              <div className="page-gutter mx-auto flex max-w-[1400px] flex-col gap-4 py-4">
                 {profile.navigation.map((item) =>
                   item.kind === "section" ? (
                     <a
@@ -171,7 +171,7 @@ function App() {
       </header>
 
       <main>
-        <section className="mx-auto max-w-[1400px] px-6 pb-20 pt-16 md:px-10 md:pt-20">
+        <section className="page-gutter mx-auto max-w-[1400px] pb-20 pt-16 md:pt-20">
           <div className="grid grid-cols-12 items-start gap-8 lg:gap-12">
             <Reveal className="col-span-12 min-w-0 lg:col-span-5">
               <EditorialRule className="block h-px w-24 bg-[var(--accent)]" />
@@ -205,27 +205,11 @@ function App() {
                     srcSet={heroImageProps.srcSet}
                     sizes={heroImageProps.sizes}
                     alt={heroImage.alt}
-                    className="h-[62vh] w-full object-cover object-center md:h-[72vh]"
+                    className="h-auto max-h-[62vh] w-full object-contain object-center md:h-[72vh] md:max-h-none md:object-cover"
                     loading="eager"
                     fetchPriority="high"
                     decoding="async"
                     style={reducedMotion ? undefined : { y: heroParallaxY }}
-                    animate={
-                      reducedMotion
-                        ? undefined
-                        : {
-                            scale: [1, 1.04, 1],
-                          }
-                    }
-                    transition={
-                      reducedMotion
-                        ? undefined
-                        : {
-                            duration: 18,
-                            ease: "easeInOut",
-                            repeat: Infinity,
-                          }
-                    }
                   />
                 </div>
                 <figcaption className="caption mt-3">
@@ -237,7 +221,7 @@ function App() {
         </section>
 
         <section id={profile.about.id} className="border-t border-[var(--rule)] bg-[var(--paper-soft)] py-20">
-          <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+          <div className="page-gutter mx-auto max-w-[1400px]">
             <Reveal>
               <p className="kicker">{profile.about.kicker}</p>
               <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">{profile.about.heading}</h2>
@@ -279,7 +263,7 @@ function App() {
         </section>
 
         <section id={profile.experience.id} className="border-t border-[var(--rule)] bg-white py-20">
-          <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+          <div className="page-gutter mx-auto max-w-[1400px]">
             <Reveal>
               <p className="kicker">{profile.experience.kicker}</p>
               <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">{profile.experience.heading}</h2>
@@ -362,7 +346,7 @@ function App() {
           </div>
         </section>
 
-        <section id={profile.projects.id} className="mx-auto max-w-[1400px] px-6 py-20 md:px-10">
+        <section id={profile.projects.id} className="page-gutter mx-auto max-w-[1400px] py-20">
           <Reveal>
             <p className="kicker">{profile.projects.kicker}</p>
             <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">{profile.projects.heading}</h2>
@@ -423,7 +407,7 @@ function App() {
         </section>
 
         <section id={profile.publications.id} className="border-y border-[var(--rule)] bg-[var(--paper-soft)] py-20">
-          <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+          <div className="page-gutter mx-auto max-w-[1400px]">
             <Reveal>
               <p className="kicker">{profile.publications.kicker}</p>
               <h2 className="mt-4 font-serif text-4xl md:text-5xl">{profile.publications.heading}</h2>
@@ -459,7 +443,7 @@ function App() {
         </section>
 
         <section id={profile.education.id} className="border-y border-[var(--rule)] bg-white py-20">
-          <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+          <div className="page-gutter mx-auto max-w-[1400px]">
             <Reveal>
               <p className="kicker">{profile.education.kicker}</p>
               <h2 className="mt-4 font-serif text-4xl md:text-5xl">{profile.education.heading}</h2>
@@ -492,7 +476,7 @@ function App() {
           </div>
         </section>
 
-        <section id={profile.contact.id} className="mx-auto max-w-[1400px] px-6 py-20 md:px-10">
+        <section id={profile.contact.id} className="page-gutter mx-auto max-w-[1400px] py-20">
           <Reveal>
             <p className="kicker">{profile.contact.kicker}</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">{profile.contact.heading}</h2>
@@ -554,7 +538,7 @@ function App() {
       </main>
 
       <footer className="border-t border-[var(--rule)]">
-        <div className="mx-auto max-w-[1400px] px-6 py-6 md:px-10">
+        <div className="page-gutter mx-auto max-w-[1400px] py-6">
           <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{profile.ui.copyright}</p>
         </div>
       </footer>
