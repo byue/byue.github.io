@@ -1,3 +1,5 @@
+import profileImage from "../assets/Profile.png";
+
 export type PhotoAsset = {
   id: string;
   url: string;
@@ -429,7 +431,7 @@ export const profile = {
   images: {
     background_editorial: {
       id: "phVaDpepOHE",
-      url: "https://images.unsplash.com/photo-1534094830444-3a1e21f7e3e7?auto=format&fit=crop&w=2000&q=80",
+      url: "https://images.unsplash.com/photo-1534094830444-3a1e21f7e3e7?auto=format&fit=crop&w=2000&q=80&sat=-100",
       alt: "White painted wall with subtle texture and shadows.",
       caption: "Soft architectural texture for the page field.",
       photographer: "Benjamin Dos Santos",
@@ -437,17 +439,17 @@ export const profile = {
       photoUrl: "https://unsplash.com/photos/phVaDpepOHE",
     },
     hero_primary: {
-      id: "R-wQExeiGrc",
-      url: "https://images.unsplash.com/photo-1520529890308-f503006340b4?auto=format&fit=crop&w=1800&q=80",
-      alt: "White concrete architectural stairs with strong geometric lines.",
-      caption: "A focus on structure, progression, and systems that endure.",
-      photographer: "Ruben Garcia",
-      photographerUrl: "https://unsplash.com/@rubengargar",
-      photoUrl: "https://unsplash.com/photos/R-wQExeiGrc",
+      id: "profile_image",
+      url: profileImage,
+      alt: "Portrait of Bryan Yue.",
+      caption: "",
+      photographer: "Bryan Yue",
+      photographerUrl: "",
+      photoUrl: "",
     },
     hero_secondary: {
       id: "dH6IjhWHNQQ",
-      url: "https://images.unsplash.com/photo-1548248823-ce16a73b6d49?auto=format&fit=crop&w=1200&q=80",
+      url: "https://images.unsplash.com/photo-1548248823-ce16a73b6d49?auto=format&fit=crop&w=1200&q=80&sat=-100",
       alt: "Curved building facade against clear blue sky.",
       caption: "Subtle curvature against a clean field of sky.",
       photographer: "Tim Stief",
@@ -456,7 +458,7 @@ export const profile = {
     },
     about_immersive: {
       id: "gyY5ecUpPes",
-      url: "https://images.unsplash.com/photo-1533421455827-883c3a23c031?auto=format&fit=crop&w=1800&q=80",
+      url: "https://images.unsplash.com/photo-1533421455827-883c3a23c031?auto=format&fit=crop&w=1800&q=80&sat=-100",
       alt: "Close-up of clear water surface.",
       caption: "From ambiguity to clarity.",
       photographer: "Joyce Hankins",
@@ -465,7 +467,7 @@ export const profile = {
     },
     spread_left: {
       id: "VTaATSuMSP8",
-      url: "https://images.unsplash.com/photo-1760734838570-9b9da0e7a6b5?auto=format&fit=crop&w=1400&q=80",
+      url: "https://images.unsplash.com/photo-1760734838570-9b9da0e7a6b5?auto=format&fit=crop&w=1400&q=80&sat=-100",
       alt: "Futuristic night cityscape with dense highway light trails and illuminated towers.",
       caption: "Under stress, a system shows its true colors.",
       photographer: "Jonathan Ikemura",
@@ -474,7 +476,7 @@ export const profile = {
     },
     spread_right: {
       id: "3SkCgnU2d6U",
-      url: "https://images.unsplash.com/photo-1636755393526-a2249074de99?auto=format&fit=crop&w=1400&q=80",
+      url: "https://images.unsplash.com/photo-1636755393526-a2249074de99?auto=format&fit=crop&w=1400&q=80&sat=-100",
       alt: "Aerial night city grid with dense lights and intersecting roads.",
       caption: "At scale, every decision is multiplied.",
       photographer: "Chris Mok",
@@ -483,7 +485,7 @@ export const profile = {
     },
     experience_amazon: {
       id: "VhQH97vAx-k",
-      url: "https://images.unsplash.com/photo-1562602400-a67800aed90c?auto=format&fit=crop&w=1200&q=80",
+      url: "https://images.unsplash.com/photo-1562602400-a67800aed90c?auto=format&fit=crop&w=1200&q=80&sat=-100",
       alt: "Abstract white signal traces over a dark background.",
       caption: "",
       photographer: "Denis Sebastian Tamas",
@@ -492,7 +494,7 @@ export const profile = {
     },
     experience_aws: {
       id: "FYiJ2--1KAY",
-      url: "https://images.unsplash.com/photo-1561139353-9a3a4e248525?auto=format&fit=crop&w=1200&q=80",
+      url: "https://images.unsplash.com/photo-1561139353-9a3a4e248525?auto=format&fit=crop&w=1200&q=80&sat=-100",
       alt: "Close-up of industrial metallic structure with repeating forms.",
       caption: "",
       photographer: "Massimo Virgilio",
@@ -501,7 +503,7 @@ export const profile = {
     },
     experience_microsoft: {
       id: "LHyKMYvi_jQ",
-      url: "https://images.unsplash.com/photo-1489272889853-8093472c6f42?auto=format&fit=crop&w=1200&q=80",
+      url: "https://images.unsplash.com/photo-1489272889853-8093472c6f42?auto=format&fit=crop&w=1200&q=80&sat=-100",
       alt: "Minimal white columns casting architectural shadows.",
       caption: "",
       photographer: "Kirill",
@@ -510,7 +512,7 @@ export const profile = {
     },
     experience_bloomberg: {
       id: "zJ8RRPQRiBE",
-      url: "https://images.unsplash.com/photo-1626767982136-71cefca915b1?auto=format&fit=crop&w=1200&q=80",
+      url: "https://images.unsplash.com/photo-1626767982136-71cefca915b1?auto=format&fit=crop&w=1200&q=80&sat=-100",
       alt: "Black and white geometric checkerboard pattern.",
       caption: "",
       photographer: "Parsoa Khorsand",
@@ -519,7 +521,7 @@ export const profile = {
     },
     experience_kernel: {
       id: "9vf1uj6i6Ww",
-      url: "https://images.unsplash.com/photo-1546497974-b213c9efb599?auto=format&fit=crop&w=1200&q=80",
+      url: "https://images.unsplash.com/photo-1546497974-b213c9efb599?auto=format&fit=crop&w=1200&q=80&sat=-100",
       alt: "Colorful light streaks on a dark background.",
       caption: "",
       photographer: "Casey Horner",
@@ -528,7 +530,7 @@ export const profile = {
     },
     project_ddos: {
       id: "evlkOfkQ5rE",
-      url: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=80",
+      url: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=80&sat=-100&bri=18",
       alt: "Rows of red cinema seats in a dark theater.",
       caption: "Cinema atmosphere for rapid visual storytelling.",
       photographer: "Felix Mooneeram",
@@ -537,7 +539,7 @@ export const profile = {
     },
     project_azure: {
       id: "5aiRb5f464A",
-      url: "https://images.unsplash.com/photo-1542626991-cbc4e32524cc?auto=format&fit=crop&w=1400&q=80",
+      url: "https://images.unsplash.com/photo-1542626991-cbc4e32524cc?auto=format&fit=crop&w=1400&q=80&sat=-100&bri=-22",
       alt: "Change planning board with sticky notes used for workflow management.",
       caption: "Structured change planning from insights to action.",
       photographer: "Jo Szczepanska",
@@ -546,7 +548,7 @@ export const profile = {
     },
     project_bloomberg: {
       id: "ws-PT2WYa9k",
-      url: "https://images.unsplash.com/photo-1744687570665-a07f99b9fea4?auto=format&fit=crop&w=1400&q=80",
+      url: "https://images.unsplash.com/photo-1744687570665-a07f99b9fea4?auto=format&fit=crop&w=1400&q=80&sat=-100",
       alt: "Wall Street street sign with American flags in the background.",
       caption: "Wall Street signals, surfaced in real time.",
       photographer: "Jon Tyson",
@@ -555,7 +557,7 @@ export const profile = {
     },
     project_relevance: {
       id: "yxJL8gmcSAY",
-      url: "https://images.unsplash.com/photo-1701523600650-007b393ed2fe?auto=format&fit=crop&w=1400&q=80",
+      url: "https://images.unsplash.com/photo-1701523600650-007b393ed2fe?auto=format&fit=crop&w=1400&q=80&sat=-100",
       alt: "Abstract black-and-white field of three-dimensional numbers.",
       caption: "Algorithmic structure visualized as layered numeric patterns.",
       photographer: "A Chosen Soul",
@@ -564,7 +566,7 @@ export const profile = {
     },
     contact_cover: {
       id: "fzOITuS1DIQ",
-      url: "https://images.unsplash.com/photo-1523875194681-bedd468c58bf?auto=format&fit=crop&w=1800&q=80",
+      url: "https://images.unsplash.com/photo-1523875194681-bedd468c58bf?auto=format&fit=crop&w=1800&q=80&sat=-100",
       alt: "Close-up of a player making a decisive chess move.",
       caption: "Calculated pressure and momentum at the critical move.",
       photographer: "JESHOOTS.COM",

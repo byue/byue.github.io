@@ -305,7 +305,7 @@ function App() {
               <p className="mt-4 max-w-xl break-words text-base text-[var(--muted)]">{profile.person.summary}</p>
 
               <motion.div
-                className="mt-8 flex flex-wrap items-center gap-2"
+                className="mt-8 hidden flex-wrap items-center gap-2 lg:flex"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.35 }}
@@ -318,7 +318,7 @@ function App() {
                 ))}
               </motion.div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-5">
+              <div className="mt-10 hidden flex-wrap items-center gap-5 lg:flex">
                 <a className="cta-primary" href={resumeHref} target="_blank" rel="noreferrer">
                   {profile.hero.primaryCtaLabel}
                 </a>
@@ -327,23 +327,42 @@ function App() {
 
             <Reveal className="col-span-1 min-w-0 lg:col-span-7" delay={0.08}>
               <figure className="relative">
-                <div className="relative overflow-hidden panel-frame bg-neutral-200">
+                <div className="relative overflow-hidden">
                   <motion.img
                     src={heroImageProps.src}
                     srcSet={heroImageProps.srcSet}
                     sizes={heroImageProps.sizes}
                     alt={heroImage.alt}
-                    className="h-auto max-h-[62vh] w-full object-contain object-center md:h-[72vh] md:max-h-none md:object-cover"
+                    className="h-auto max-h-[62vh] w-full object-contain object-center md:h-[72vh] lg:h-[82vh] xl:h-[86vh]"
                     loading="eager"
                     fetchPriority="high"
                     decoding="async"
                     style={reducedMotion ? undefined : { y: heroParallaxY }}
                   />
                 </div>
-                <figcaption className="caption mt-3">
-                  {heroImage.caption}
-                </figcaption>
               </figure>
+            </Reveal>
+
+            <Reveal className="col-span-1 min-w-0 lg:hidden" delay={0.1}>
+              <motion.div
+                className="mt-2 flex flex-wrap items-center gap-2"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.35 }}
+                variants={chipListVariants}
+              >
+                {profile.hero.metadata.map((item) => (
+                  <motion.span key={item} className="metadata-chip" variants={chipVariants}>
+                    {item}
+                  </motion.span>
+                ))}
+              </motion.div>
+
+              <div className="mt-8 flex flex-wrap items-center gap-5">
+                <a className="cta-primary" href={resumeHref} target="_blank" rel="noreferrer">
+                  {profile.hero.primaryCtaLabel}
+                </a>
+              </div>
             </Reveal>
           </div>
         </section>
