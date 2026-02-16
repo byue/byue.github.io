@@ -12,15 +12,8 @@ export function Reveal({ children, className, delay = 0, y = 28 }: RevealProps) 
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: false, margin: "-12% 0px" });
   const reducedMotion = useReducedMotion();
-  const hiddenState = reducedMotion
-    ? { opacity: 1, y: 0, filter: "blur(0px)", clipPath: "inset(0 0 0% 0)" }
-    : {
-        opacity: 0,
-        y,
-        filter: "blur(10px)",
-        clipPath: "inset(0 0 100% 0)",
-      };
-  const visibleState = { opacity: 1, y: 0, filter: "blur(0px)", clipPath: "inset(0 0 0% 0)" };
+  const hiddenState = reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y };
+  const visibleState = { opacity: 1, y: 0 };
 
   return (
     <motion.div

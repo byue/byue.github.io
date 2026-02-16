@@ -91,10 +91,10 @@ function App() {
   };
 
   return (
-    <div className="relative bg-[var(--paper)] text-[var(--ink)]">
+    <div className="relative overflow-x-hidden bg-[var(--paper)] text-[var(--ink)]">
       <header className="sticky top-0 z-40 border-b border-[var(--rule)] bg-[color:rgba(255,255,255,0.95)] shadow-[0_1px_8px_rgba(20,20,20,0.04)] backdrop-blur-sm">
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-3 md:px-10">
-          <div>
+          <div className="min-w-0">
             <p className="kicker">{profile.masthead.title}</p>
             <p className="font-serif text-sm tracking-[0.06em]">{profile.masthead.issue}</p>
           </div>
@@ -173,7 +173,7 @@ function App() {
       <main>
         <section className="mx-auto max-w-[1400px] px-6 pb-20 pt-16 md:px-10 md:pt-20">
           <div className="grid grid-cols-12 items-start gap-8 lg:gap-12">
-            <Reveal className="col-span-12 lg:col-span-5">
+            <Reveal className="col-span-12 min-w-0 lg:col-span-5">
               <EditorialRule className="block h-px w-24 bg-[var(--accent)]" />
 
               <h1 className="mt-6 font-serif text-6xl leading-[0.9] tracking-tight md:text-7xl">
@@ -197,7 +197,7 @@ function App() {
               </div>
             </Reveal>
 
-            <Reveal className="col-span-12 lg:col-span-7" delay={0.08}>
+            <Reveal className="col-span-12 min-w-0 lg:col-span-7" delay={0.08}>
               <figure className="relative">
                 <div className="relative overflow-hidden panel-frame bg-neutral-200">
                   <motion.img
