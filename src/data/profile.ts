@@ -85,7 +85,7 @@ export const profile = {
     keyNumbersLabel: "Highlights",
     featureLabel: "Writing",
     repositoryLabel: "View Repository",
-    copyright: "© 2026 Bryan Yue. All rights reserved.",
+    copyright: "© 2026 Bryan Yue\nAll Rights Reserved",
   },
   hero: {
     kicker: "Cover Feature",

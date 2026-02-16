@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { EditorialRule } from "./components/EditorialRule";
 import { Reveal } from "./components/Reveal";
@@ -11,6 +11,7 @@ function App() {
   const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const heroParallaxY = useTransform(scrollYProgress, [0, 1], [0, -64]);
+  const modalScrollRef = useRef<HTMLElement | null>(null);
 
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -51,6 +52,58 @@ function App() {
         quality: 62,
       })
     : null;
+  const chipListVariants = reducedMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.05,
+            delayChildren: 0.04,
+          },
+        },
+      };
+  const chipVariants = reducedMotion
+    ? {
+        hidden: { opacity: 1, y: 0 },
+        visible: { opacity: 1, y: 0 },
+      }
+    : {
+        hidden: { opacity: 0, y: 8 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.3,
+          },
+        },
+      };
+  const modalTextListVariants = reducedMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.12,
+            delayChildren: 0.04,
+          },
+        },
+      };
+  const modalTextItemVariants = reducedMotion
+    ? {
+        hidden: { opacity: 1, y: 0 },
+        visible: { opacity: 1, y: 0 },
+      }
+    : {
+        hidden: { opacity: 0, y: 14 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.35,
+          },
+        },
+      };
 
   useEffect(() => {
     if (!activeProject) {
@@ -63,13 +116,55 @@ function App() {
       }
     };
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const html = document.documentElement;
+    const body = document.body;
+    const scrollY = window.scrollY;
+    const scrollbarCompensation = window.innerWidth - html.clientWidth;
+
+    const previousHtmlOverflow = html.style.overflow;
+    const previousHtmlScrollBehavior = html.style.scrollBehavior;
+    const previousBodyOverflow = body.style.overflow;
+    const previousBodyPosition = body.style.position;
+    const previousBodyTop = body.style.top;
+    const previousBodyLeft = body.style.left;
+    const previousBodyRight = body.style.right;
+    const previousBodyWidth = body.style.width;
+    const previousBodyTouchAction = body.style.touchAction;
+    const previousBodyPaddingRight = body.style.paddingRight;
+
+    html.style.overflow = "hidden";
+    html.style.scrollBehavior = "auto";
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+    body.style.touchAction = "none";
+
+    if (scrollbarCompensation > 0) {
+      body.style.paddingRight = `${scrollbarCompensation}px`;
+    }
+
     window.addEventListener("keydown", handleEscape);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleEscape);
+      const lockedTop = Number.parseInt(body.style.top || "", 10);
+      const restoredScrollY = Number.isFinite(lockedTop) ? Math.abs(lockedTop) : scrollY;
+      html.style.overflow = previousHtmlOverflow;
+      body.style.overflow = previousBodyOverflow;
+      body.style.position = previousBodyPosition;
+      body.style.top = previousBodyTop;
+      body.style.left = previousBodyLeft;
+      body.style.right = previousBodyRight;
+      body.style.width = previousBodyWidth;
+      body.style.touchAction = previousBodyTouchAction;
+      body.style.paddingRight = previousBodyPaddingRight;
+      window.scrollTo(0, restoredScrollY);
+      requestAnimationFrame(() => {
+        html.style.scrollBehavior = previousHtmlScrollBehavior;
+      });
     };
   }, [activeProject]);
 
@@ -183,13 +278,19 @@ function App() {
               <p className="mt-5 max-w-xl break-words text-lg text-[var(--muted)] md:text-xl">{profile.person.title}</p>
               <p className="mt-4 max-w-xl break-words text-base text-[var(--muted)]">{profile.person.summary}</p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-2">
+              <motion.div
+                className="mt-8 flex flex-wrap items-center gap-2"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.35 }}
+                variants={chipListVariants}
+              >
                 {profile.hero.metadata.map((item) => (
-                  <span key={item} className="metadata-chip">
+                  <motion.span key={item} className="metadata-chip" variants={chipVariants}>
                     {item}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
 
               <div className="mt-10 flex flex-wrap items-center gap-5">
                 <a className="cta-primary" href={resumeHref} target="_blank" rel="noreferrer">
@@ -221,8 +322,9 @@ function App() {
           </div>
         </section>
 
-        <section id={profile.about.id} className="border-t border-[var(--rule)] bg-[var(--paper-soft)] py-20">
-          <div className="page-gutter mx-auto max-w-[1400px]">
+        <section id={profile.about.id} className="bg-[var(--paper-soft)]">
+          <EditorialRule className="h-px w-full bg-[var(--rule)]" />
+          <div className="page-gutter mx-auto max-w-[1400px] py-20">
             <Reveal>
               <p className="kicker">{profile.about.kicker}</p>
               <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">{profile.about.heading}</h2>
@@ -263,8 +365,9 @@ function App() {
           </div>
         </section>
 
-        <section id={profile.experience.id} className="border-t border-[var(--rule)] bg-white py-20">
-          <div className="page-gutter mx-auto max-w-[1400px]">
+        <section id={profile.experience.id} className="bg-white">
+          <EditorialRule className="h-px w-full bg-[var(--rule)]" />
+          <div className="page-gutter mx-auto max-w-[1400px] py-20">
             <Reveal>
               <p className="kicker">{profile.experience.kicker}</p>
               <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">{profile.experience.heading}</h2>
@@ -328,17 +431,32 @@ function App() {
                           </motion.ul>
                         </div>
 
-                        <aside className="mt-8 lg:mt-0 lg:border-l lg:border-[var(--rule)] lg:border-l-[1px] lg:pl-6">
-                          <div className="flex flex-wrap gap-2">
+                        <aside className="relative mt-8 lg:mt-0 lg:pl-6">
+                          <motion.span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute left-0 top-0 hidden h-full w-px bg-[var(--rule)] lg:block"
+                            initial={reducedMotion ? { opacity: 1 } : { scaleY: 0, opacity: 1 }}
+                            whileInView={reducedMotion ? { opacity: 1 } : { scaleY: 1, opacity: 1 }}
+                            viewport={{ once: false, amount: 0.35 }}
+                            transition={{ duration: reducedMotion ? 0.01 : 1.1, ease: [0.22, 1, 0.36, 1] }}
+                            style={{ transformOrigin: "top center" }}
+                          />
+                          <motion.div
+                            className="flex flex-wrap gap-2"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.35 }}
+                            variants={chipListVariants}
+                          >
                             {chapter.techUsed.map((tech) => (
-                              <span key={tech} className="metadata-chip">
+                              <motion.span key={tech} className="metadata-chip" variants={chipVariants}>
                                 {tech}
-                              </span>
+                              </motion.span>
                             ))}
-                          </div>
+                          </motion.div>
                         </aside>
                       </article>
-                      <div className="h-px bg-[var(--rule)]" />
+                      <EditorialRule className="block h-px w-full bg-[var(--rule)]" />
                     </>
                   </Reveal>
                 );
@@ -347,68 +465,78 @@ function App() {
           </div>
         </section>
 
-        <section id={profile.projects.id} className="page-gutter mx-auto max-w-[1400px] py-20">
-          <Reveal>
-            <p className="kicker">{profile.projects.kicker}</p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">{profile.projects.heading}</h2>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-[var(--muted)]">{profile.projects.intro}</p>
-            <EditorialRule className="mt-6 block h-px w-full bg-[var(--rule)]" />
-          </Reveal>
+        <section id={profile.projects.id}>
+          <EditorialRule className="h-px w-full bg-[var(--rule)]" />
+          <div className="page-gutter mx-auto max-w-[1400px] py-20">
+            <Reveal>
+              <p className="kicker">{profile.projects.kicker}</p>
+              <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">{profile.projects.heading}</h2>
+              <p className="mt-4 max-w-3xl text-base leading-8 text-[var(--muted)]">{profile.projects.intro}</p>
+              <EditorialRule className="mt-6 block h-px w-full bg-[var(--rule)]" />
+            </Reveal>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            {profile.projects.entries.map((project, index) => {
-              const image = profile.images[project.imageId];
-              const projectImageProps = getResponsiveImageProps(image.url, {
-                sizes: "(min-width: 1400px) 620px, (min-width: 768px) 44vw, 92vw",
-                widths: [360, 480, 640, 768, 960, 1200, 1400],
-                defaultWidth: 768,
-                quality: 62,
-              });
+            <div className="mt-10 grid gap-8 md:grid-cols-2">
+              {profile.projects.entries.map((project, index) => {
+                const image = profile.images[project.imageId];
+                const projectImageProps = getResponsiveImageProps(image.url, {
+                  sizes: "(min-width: 1400px) 620px, (min-width: 768px) 44vw, 92vw",
+                  widths: [360, 480, 640, 768, 960, 1200, 1400],
+                  defaultWidth: 768,
+                  quality: 62,
+                });
 
-              return (
-                <Reveal key={project.id} className="h-full" delay={index * 0.04}>
-                  <button
-                    type="button"
-                    onClick={() => setActiveProjectId(project.id)}
-                    className="group panel-frame flex h-full w-full flex-col bg-white text-left transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(20,20,20,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-                  >
-                    <div className="overflow-hidden">
-                      <motion.img
-                        src={projectImageProps.src}
-                        srcSet={projectImageProps.srcSet}
-                        sizes={projectImageProps.sizes}
-                        alt={image.alt}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-[320px] w-full object-cover"
-                        whileHover={reducedMotion ? undefined : { scale: 1.03 }}
-                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col space-y-4 p-6">
-                      <div className="flex items-end justify-between gap-4">
-                        <h3 className="font-serif text-2xl leading-tight">{project.title}</h3>
-                        <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{project.year}</p>
+                return (
+                  <Reveal key={project.id} className="h-full" delay={index * 0.04}>
+                    <button
+                      type="button"
+                      onClick={() => setActiveProjectId(project.id)}
+                      className="group panel-frame flex h-full w-full flex-col bg-white text-left transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(20,20,20,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                    >
+                      <div className="overflow-hidden">
+                        <motion.img
+                          src={projectImageProps.src}
+                          srcSet={projectImageProps.srcSet}
+                          sizes={projectImageProps.sizes}
+                          alt={image.alt}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-[320px] w-full object-cover"
+                          whileHover={reducedMotion ? undefined : { scale: 1.03 }}
+                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        />
                       </div>
-                      <p className="text-sm leading-7 text-[var(--muted)]">{project.caption}</p>
+                      <div className="flex flex-1 flex-col space-y-4 p-6">
+                        <div className="flex items-end justify-between gap-4">
+                          <h3 className="font-serif text-2xl leading-tight">{project.title}</h3>
+                          <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{project.year}</p>
+                        </div>
+                        <p className="text-sm leading-7 text-[var(--muted)]">{project.caption}</p>
 
-                      <div className="mt-auto flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span key={tag} className="metadata-chip">
-                            {tag}
-                          </span>
-                        ))}
+                        <motion.div
+                          className="mt-auto flex flex-wrap gap-2"
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: false, amount: 0.35 }}
+                          variants={chipListVariants}
+                        >
+                          {project.tags.map((tag) => (
+                            <motion.span key={tag} className="metadata-chip" variants={chipVariants}>
+                              {tag}
+                            </motion.span>
+                          ))}
+                        </motion.div>
                       </div>
-                    </div>
-                  </button>
-                </Reveal>
-              );
-            })}
+                    </button>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
         </section>
 
-        <section id={profile.publications.id} className="border-y border-[var(--rule)] bg-[var(--paper-soft)] py-20">
-          <div className="page-gutter mx-auto max-w-[1400px]">
+        <section id={profile.publications.id} className="bg-[var(--paper-soft)]">
+          <EditorialRule className="h-px w-full bg-[var(--rule)]" />
+          <div className="page-gutter mx-auto max-w-[1400px] py-20">
             <Reveal>
               <p className="kicker">{profile.publications.kicker}</p>
               <h2 className="mt-4 font-serif text-4xl md:text-5xl">{profile.publications.heading}</h2>
@@ -441,10 +569,12 @@ function App() {
               ))}
             </div>
           </div>
+          <EditorialRule className="h-px w-full bg-[var(--rule)]" />
         </section>
 
-        <section id={profile.education.id} className="border-y border-[var(--rule)] bg-white py-20">
-          <div className="page-gutter mx-auto max-w-[1400px]">
+        <section id={profile.education.id} className="bg-white">
+          <EditorialRule className="h-px w-full bg-[var(--rule)]" />
+          <div className="page-gutter mx-auto max-w-[1400px] py-20">
             <Reveal>
               <p className="kicker">{profile.education.kicker}</p>
               <h2 className="mt-4 font-serif text-4xl md:text-5xl">{profile.education.heading}</h2>
@@ -475,6 +605,7 @@ function App() {
               </Reveal>
             </div>
           </div>
+          <EditorialRule className="h-px w-full bg-[var(--rule)]" />
         </section>
 
         <section id={profile.contact.id} className="page-gutter mx-auto max-w-[1400px] py-20">
@@ -485,7 +616,7 @@ function App() {
           </Reveal>
 
           <Reveal className="mt-8">
-            <div className="relative overflow-hidden panel-frame bg-black text-white">
+            <div className="relative overflow-hidden text-white">
               <motion.img
                 src={contactImageProps.src}
                 srcSet={contactImageProps.srcSet}
@@ -538,26 +669,36 @@ function App() {
         </section>
       </main>
 
-      <footer className="border-t border-[var(--rule)]">
+      <footer>
+        <EditorialRule className="h-px w-full bg-[var(--rule)]" />
         <div className="page-gutter mx-auto max-w-[1400px] py-6">
-          <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{profile.ui.copyright}</p>
+          <motion.p
+            className="whitespace-pre-line text-center text-xs leading-5 tracking-[0.16em] text-[var(--muted)]"
+            initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.8 }}
+            transition={{ duration: reducedMotion ? 0.01 : 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {profile.ui.copyright}
+          </motion.p>
         </div>
       </footer>
 
       <AnimatePresence>
         {activeProject ? (
           <motion.div
-            className="fixed inset-0 z-50 flex items-end justify-center bg-black/55 p-4 backdrop-blur-[2px] md:items-center"
+            className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/55 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] backdrop-blur-[2px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveProjectId(null)}
           >
             <motion.article
+              ref={modalScrollRef}
               role="dialog"
               aria-modal="true"
               aria-label={`${activeProject.title} case study`}
-              className="panel-frame max-h-[94vh] w-full max-w-5xl overflow-y-auto bg-[var(--paper)] p-6 md:p-10"
+              className="panel-frame max-h-[calc(100dvh-2rem)] w-full max-w-5xl overflow-y-auto overscroll-contain bg-[var(--paper)] p-6 md:p-10"
               initial={reducedMotion ? { opacity: 1 } : { y: 24, opacity: 0 }}
               animate={reducedMotion ? { opacity: 1 } : { y: 0, opacity: 1 }}
               exit={reducedMotion ? { opacity: 0 } : { y: 16, opacity: 0 }}
@@ -586,7 +727,7 @@ function App() {
               <EditorialRule className="mt-6 block h-px w-full bg-[var(--rule)]" />
 
               <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_240px]">
-                <div>
+                <div className="order-2 lg:order-none">
                   <div className="panel-frame overflow-hidden">
                     {activeProjectImage && activeProjectImageProps ? (
                       <img
@@ -600,40 +741,58 @@ function App() {
                       />
                     ) : null}
                   </div>
-                  <div className="mt-8 space-y-8">
-                    <div>
+                  <motion.div
+                    className="mt-8 space-y-8"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ root: modalScrollRef, once: false, amount: 0.2 }}
+                    variants={modalTextListVariants}
+                  >
+                    <motion.div variants={modalTextItemVariants}>
                       <p className="kicker">{profile.ui.problemLabel}</p>
                       <p className="mt-2 text-base leading-8 text-[var(--muted)]">{activeProject.problem}</p>
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div variants={modalTextItemVariants}>
                       <p className="kicker">{profile.ui.approachLabel}</p>
                       <p className="mt-2 text-base leading-8 text-[var(--muted)]">{activeProject.approach}</p>
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div variants={modalTextItemVariants}>
                       <p className="kicker">{profile.ui.outcomeLabel}</p>
                       <p className="mt-2 text-base leading-8 text-[var(--muted)]">{activeProject.outcome}</p>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
 
-                  <div className="mt-8 flex flex-wrap gap-2">
+                  <motion.div
+                    className="mt-8 flex flex-wrap gap-2"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.35 }}
+                    variants={chipListVariants}
+                  >
                     {activeProject.tags.map((tag) => (
-                      <span key={tag} className="metadata-chip">
+                      <motion.span key={tag} className="metadata-chip" variants={chipVariants}>
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
 
-                <aside className="panel-frame bg-white p-5">
+                <aside className="order-1 panel-frame bg-white p-5 lg:order-none lg:self-start">
                   <p className="kicker">{profile.ui.keyNumbersLabel}</p>
-                  <div className="mt-4 space-y-5">
+                  <motion.div
+                    className="mt-4 space-y-5"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ root: modalScrollRef, once: false, amount: 0.2 }}
+                    variants={modalTextListVariants}
+                  >
                     {activeProject.keyNumbers.map((item) => (
-                      <div key={item.label}>
+                      <motion.div key={item.label} variants={modalTextItemVariants}>
                         <p className="font-serif text-2xl leading-none">{item.value}</p>
                         <p className="mt-1 text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{item.label}</p>
-                      </div>
+                      </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
                 </aside>
               </div>
             </motion.article>
