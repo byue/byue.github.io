@@ -1,4 +1,4 @@
-import profileImage from "../assets/Profile.png";
+import profileImage from "../assets/Profile.webp";
 
 export type PhotoAsset = {
   id: string;
