@@ -112,8 +112,8 @@ svg {
   }
 
   .page-gutter {
-    padding-left: max(1.75rem, env(safe-area-inset-left));
-    padding-right: max(1.75rem, env(safe-area-inset-right));
+    padding-left: max(2.25rem, env(safe-area-inset-left));
+    padding-right: max(2.25rem, env(safe-area-inset-right));
   }
 
   @media (min-width: 768px) {

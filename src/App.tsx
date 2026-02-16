@@ -33,6 +33,7 @@ function App() {
     widths: [640, 768, 960, 1200, 1440, 1800, 2200],
     defaultWidth: 1440,
     quality: 70,
+    fit: "max",
   });
   const contactImage = profile.images[profile.contact.imageId];
   const contactImageProps = getResponsiveImageProps(contactImage.url, {

@@ -3,6 +3,7 @@ type ResponsiveImageOptions = {
   widths: number[];
   defaultWidth?: number;
   quality?: number;
+  fit?: string;
 };
 
 type ResponsiveImageProps = {
@@ -13,6 +14,7 @@ type ResponsiveImageProps = {
 
 const UNSPLASH_HOST_SUFFIX = ".unsplash.com";
 const DEFAULT_QUALITY = 68;
+const DEFAULT_FIT = "crop";
 
 const sortUniqueWidths = (widths: number[]) =>
   Array.from(new Set(widths.filter((width) => Number.isFinite(width) && width > 0).map((width) => Math.round(width))))
@@ -27,13 +29,10 @@ const getUnsplashUrl = (url: string) => {
   }
 };
 
-const buildUnsplashVariant = (sourceUrl: URL, width: number, quality: number) => {
+const buildUnsplashVariant = (sourceUrl: URL, width: number, quality: number, fit: string) => {
   const variantUrl = new URL(sourceUrl.toString());
   variantUrl.searchParams.set("auto", "format");
-
-  if (!variantUrl.searchParams.has("fit")) {
-    variantUrl.searchParams.set("fit", "crop");
-  }
+  variantUrl.searchParams.set("fit", fit);
 
   variantUrl.searchParams.set("w", `${width}`);
   variantUrl.searchParams.set("q", `${quality}`);
@@ -42,7 +41,7 @@ const buildUnsplashVariant = (sourceUrl: URL, width: number, quality: number) =>
 
 export const getResponsiveImageProps = (
   url: string,
-  { sizes, widths, defaultWidth, quality = DEFAULT_QUALITY }: ResponsiveImageOptions,
+  { sizes, widths, defaultWidth, quality = DEFAULT_QUALITY, fit = DEFAULT_FIT }: ResponsiveImageOptions,
 ): ResponsiveImageProps => {
   const unsplashUrl = getUnsplashUrl(url);
   if (!unsplashUrl) {
@@ -51,7 +50,7 @@ export const getResponsiveImageProps = (
 
   const uniqueWidths = sortUniqueWidths(widths);
   if (uniqueWidths.length === 0) {
-    return { src: buildUnsplashVariant(unsplashUrl, defaultWidth ?? 1200, quality), sizes };
+    return { src: buildUnsplashVariant(unsplashUrl, defaultWidth ?? 1200, quality, fit), sizes };
   }
 
   const resolvedDefaultWidth = defaultWidth && defaultWidth > 0
@@ -59,9 +58,9 @@ export const getResponsiveImageProps = (
     : uniqueWidths[Math.floor(uniqueWidths.length / 2)];
 
   return {
-    src: buildUnsplashVariant(unsplashUrl, resolvedDefaultWidth, quality),
+    src: buildUnsplashVariant(unsplashUrl, resolvedDefaultWidth, quality, fit),
     srcSet: uniqueWidths
-      .map((width) => `${buildUnsplashVariant(unsplashUrl, width, quality)} ${width}w`)
+      .map((width) => `${buildUnsplashVariant(unsplashUrl, width, quality, fit)} ${width}w`)
       .join(", "),
     sizes,
   };
