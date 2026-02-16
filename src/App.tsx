@@ -52,6 +52,32 @@ function App() {
         quality: 62,
       })
     : null;
+  const parseEducationItem = (item: string) => {
+    const parts = item
+      .split("|")
+      .map((part) => part.trim())
+      .filter(Boolean);
+
+    if (parts.length < 3) {
+      return {
+        institution: item,
+        degree: "",
+        focusItems: [] as string[],
+        years: "",
+        gpa: "",
+      };
+    }
+
+    const [institution, degree, focus, years = "", gpa = ""] = parts;
+    const focusItems = focus
+      .split(/\s+and\s+|,\s*/i)
+      .map((part) => part.trim())
+      .filter(Boolean);
+    return { institution, degree, focusItems, years, gpa };
+  };
+  const publicationsByYear = [...profile.publications.items].sort(
+    (a, b) => Number(b.year) - Number(a.year),
+  );
   const chipListVariants = reducedMotion
     ? { hidden: {}, visible: {} }
     : {
@@ -531,12 +557,10 @@ function App() {
             </Reveal>
 
             <div className="mt-7">
-              {profile.publications.items.map((item, index) => (
+              {publicationsByYear.map((item, index) => (
                 <Reveal key={item.label} delay={index * 0.04}>
                   <article className="grid items-start gap-4 border-b border-[var(--rule)] py-6 md:grid-cols-[100px_1fr]">
-                    <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
-                      {profile.ui.featureLabel} {index + 1}
-                    </p>
+                    <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{item.year}</p>
                     <div className="space-y-2">
                       <a
                         className="editorial-link font-serif text-2xl leading-tight"
@@ -570,24 +594,45 @@ function App() {
             <div className="mt-10 grid gap-12 md:grid-cols-2">
               <Reveal>
                 <p className="kicker">{profile.ui.educationLabel}</p>
-                <div className="mt-4 space-y-4">
-                  {profile.education.educationItems.map((item) => (
-                    <p key={item} className="font-serif text-2xl leading-tight">
-                      {item}
-                    </p>
-                  ))}
+                <div className="mt-4 space-y-5">
+                  {profile.education.educationItems.map((item) => {
+                    const parsed = parseEducationItem(item);
+                    return (
+                      <article key={item} className="panel-frame bg-[var(--paper-soft)] p-6">
+                        <h3 className="font-serif text-3xl leading-tight">{parsed.institution}</h3>
+                        {parsed.degree || parsed.focusItems.length > 0 ? (
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {parsed.degree ? <span className="metadata-chip">{parsed.degree}</span> : null}
+                            {parsed.focusItems.map((focusItem) => (
+                              <span key={focusItem} className="metadata-chip">
+                                {focusItem}
+                              </span>
+                            ))}
+                          </div>
+                        ) : null}
+                        {parsed.years || parsed.gpa ? (
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {parsed.years ? <span className="metadata-chip">{parsed.years}</span> : null}
+                            {parsed.gpa ? <span className="metadata-chip">{parsed.gpa}</span> : null}
+                          </div>
+                        ) : null}
+                      </article>
+                    );
+                  })}
                 </div>
               </Reveal>
 
               <Reveal delay={0.08}>
                 <p className="kicker">{profile.ui.honorsLabel}</p>
-                <div className="mt-4 space-y-3">
-                  {profile.education.honors.map((honor) => (
-                    <p key={honor} className="text-lg leading-relaxed">
-                      {honor}
-                    </p>
-                  ))}
-                </div>
+                <article className="mt-4 panel-frame bg-[var(--paper-soft)] p-6">
+                  <ul className="space-y-4">
+                    {profile.education.honors.map((honor) => (
+                      <li key={honor} className="border-b border-[var(--rule)] pb-4 last:border-b-0 last:pb-0">
+                        <p className="text-base leading-7 text-[var(--muted)]">{honor}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
               </Reveal>
             </div>
           </div>

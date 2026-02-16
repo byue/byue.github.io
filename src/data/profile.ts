@@ -264,7 +264,7 @@ export const profile = {
       {
         id: "kernel-2018",
         kicker: "Chapter 01",
-        company: "Kernel Labs | Incubator",
+        company: "University of Washington | Kernel Labs",
         role: "Machine Learning Engineer Intern",
         dateRange: "March 2018-June 2018",
         location: "Seattle, WA",
@@ -380,6 +380,7 @@ export const profile = {
     intro: "Selected authored works.",
     items: [
       {
+        year: "2018",
         label: "Xkvisor",
         href: "https://drive.google.com/file/d/1wbHULud7eTS6xfHbK9wvkJQ7AV0wjsFW/view?usp=sharing",
         description:
@@ -387,16 +388,19 @@ export const profile = {
       },
 
       {
+        year: "2025",
         label: "Sliding Window Demystified",
         href: "https://medium.com/@yue_bryan123/sliding-window-demystified-templates-to-crack-longest-shortest-and-fixed-size-windows-61ce4172abc4",
         description: "Medium Post Explaining Sliding Window Technique.",
       },
       {
+        year: "2026",
         label: "A Framework for Solving Dynamic Programming Problems",
         href: "https://medium.com/@yue_bryan123/a-framework-for-solving-dynamic-programming-problems-f022bcb10e82",
         description: "Medium Post Explaining Dynamic Programming Problem-Solving Framework.",
       },
       {
+        year: "2017",
         label: "Molecular Diagnostic Evaluation of Post-surgical Endophthalmitis",
         href: "https://iovs.arvojournals.org/article.aspx?articleid=2641371",
         description:
@@ -409,9 +413,9 @@ export const profile = {
     kicker: "Credentials",
     heading: "Education and Honors",
     educationItems: [
-      "University of Washington - Computer Science and Biochemistry (2014-2018)",
+      "University of Washington | Bachelor of Science | Computer Science and Biochemistry | 2014 - 2018 | GPA: 3.89",
     ],
-    honors: ["Phi Beta Kappa Honor Society", "Magna Cum Laude"],
+    honors: ["Phi Beta Kappa Honor Society", "Magna Cum Laude (Top 3.5%)"],
   },
   contact: {
     id: "contact",
