@@ -173,15 +173,15 @@ function App() {
 
       <main>
         <section className="page-gutter mx-auto max-w-[1400px] pb-20 pt-16 md:pt-20">
-          <div className="grid grid-cols-12 items-start gap-8 lg:gap-12">
-            <Reveal className="col-span-12 min-w-0 lg:col-span-5">
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
+            <Reveal className="col-span-1 min-w-0 lg:col-span-5">
               <EditorialRule className="block h-px w-24 bg-[var(--accent)]" />
 
-              <h1 className="mt-6 font-serif text-6xl leading-[0.9] tracking-tight md:text-7xl">
+              <h1 className="mt-6 font-serif text-5xl leading-[0.9] tracking-tight sm:text-6xl md:text-7xl">
                 {profile.person.name}
               </h1>
-              <p className="mt-5 max-w-xl text-lg text-[var(--muted)] md:text-xl">{profile.person.title}</p>
-              <p className="mt-4 max-w-xl text-base text-[var(--muted)]">{profile.person.summary}</p>
+              <p className="mt-5 max-w-xl break-words text-lg text-[var(--muted)] md:text-xl">{profile.person.title}</p>
+              <p className="mt-4 max-w-xl break-words text-base text-[var(--muted)]">{profile.person.summary}</p>
 
               <div className="mt-8 flex flex-wrap items-center gap-2">
                 {profile.hero.metadata.map((item) => (
@@ -198,7 +198,7 @@ function App() {
               </div>
             </Reveal>
 
-            <Reveal className="col-span-12 min-w-0 lg:col-span-7" delay={0.08}>
+            <Reveal className="col-span-1 min-w-0 lg:col-span-7" delay={0.08}>
               <figure className="relative">
                 <div className="relative overflow-hidden panel-frame bg-neutral-200">
                   <motion.img
@@ -229,8 +229,8 @@ function App() {
               <EditorialRule className="mt-6 block h-px w-full bg-[var(--rule)]" />
             </Reveal>
 
-            <div className="mt-10 grid grid-cols-12 gap-8 lg:gap-10">
-              <Reveal className="col-span-12">
+            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+              <Reveal className="col-span-1 lg:col-span-12">
                 <div className="columns-1 gap-10 md:columns-2">
                   {profile.about.paragraphs.map((paragraph, index) => (
                     <p

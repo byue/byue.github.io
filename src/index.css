@@ -92,7 +92,8 @@ svg {
   }
 
   .metadata-chip {
-    @apply inline-flex items-center border border-[var(--rule)] border-[1px] bg-[color:rgba(255,255,255,0.56)] px-3 py-1.5 text-[11px] uppercase tracking-[0.15em] text-[var(--ink)];
+    @apply inline-flex max-w-full items-center border border-[var(--rule)] border-[1px] bg-[color:rgba(255,255,255,0.56)] px-2.5 py-1.5 text-[10px] uppercase tracking-[0.12em] text-[var(--ink)] sm:px-3 sm:text-[11px] sm:tracking-[0.15em];
+    overflow-wrap: anywhere;
   }
 
   .cta-primary {
@@ -112,8 +113,8 @@ svg {
   }
 
   .page-gutter {
-    padding-left: max(2.25rem, env(safe-area-inset-left));
-    padding-right: max(2.25rem, env(safe-area-inset-right));
+    padding-left: max(clamp(1.25rem, 5vw, 2.25rem), env(safe-area-inset-left));
+    padding-right: max(clamp(1.25rem, 5vw, 2.25rem), env(safe-area-inset-right));
   }
 
   @media (min-width: 768px) {
