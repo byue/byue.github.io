@@ -75,9 +75,6 @@ function App() {
       .filter(Boolean);
     return { institution, degree, focusItems, years, gpa };
   };
-  const publicationsByYear = [...profile.publications.items].sort(
-    (a, b) => Number(b.year) - Number(a.year),
-  );
   const chipListVariants = reducedMotion
     ? { hidden: {}, visible: {} }
     : {
@@ -576,7 +573,7 @@ function App() {
             </Reveal>
 
             <div className="mt-7">
-              {publicationsByYear.map((item, index) => (
+              {profile.publications.items.map((item, index) => (
                 <Reveal key={item.label} delay={index * 0.04}>
                   <article className="grid items-start gap-4 border-b border-[var(--rule)] py-6 md:grid-cols-[100px_1fr]">
                     <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">{item.year}</p>

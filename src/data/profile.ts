@@ -382,18 +382,10 @@ export const profile = {
     intro: "Selected authored works.",
     items: [
       {
-        year: "2018",
-        label: "Xkvisor",
-        href: "https://drive.google.com/file/d/1wbHULud7eTS6xfHbK9wvkJQ7AV0wjsFW/view?usp=sharing",
-        description:
-          "Designed and implemented xkvisor, a virtualization extension to a monolithic, POSIX-like teaching OS (xk), defining a user-mode hypervisor interface that supports customizable, lightweight guest operating systems. Developed abstractions for safe isolation, resource management, and user-space execution of guest kernels without modifying the host kernel.",
-      },
-
-      {
-        year: "2025",
-        label: "Sliding Window Demystified",
-        href: "https://medium.com/@yue_bryan123/sliding-window-demystified-templates-to-crack-longest-shortest-and-fixed-size-windows-61ce4172abc4",
-        description: "Medium Post Explaining Sliding Window Technique.",
+        year: "2026",
+        label: "Before the 3 AM Page: What Every Software Engineer Should Know About Latency and Load",
+        href: "https://medium.com/@yue_bryan123/before-the-3-am-page-what-every-software-engineer-should-know-about-latency-and-load-09462e7db1c2",
+        description: "Medium post on load tesitng, latency and throughput in production systems.",
       },
       {
         year: "2026",
@@ -402,17 +394,17 @@ export const profile = {
         description: "Medium Post Explaining Dynamic Programming Problem-Solving Framework.",
       },
       {
-        year: "2026",
-        label: "Before the 3 AM Page: What Every Software Engineer Should Know About Latency and Load",
-        href: "https://medium.com/@yue_bryan123/before-the-3-am-page-what-every-software-engineer-should-know-about-latency-and-load-09462e7db1c2",
-        description: "Medium post on latency and load tradeoffs in production systems.",
+        year: "2025",
+        label: "Sliding Window Demystified",
+        href: "https://medium.com/@yue_bryan123/sliding-window-demystified-templates-to-crack-longest-shortest-and-fixed-size-windows-61ce4172abc4",
+        description: "Medium Post Explaining Sliding Window Technique.",
       },
       {
-        year: "2017",
-        label: "Molecular Diagnostic Evaluation of Post-surgical Endophthalmitis",
-        href: "https://iovs.arvojournals.org/article.aspx?articleid=2641371",
+        year: "2018",
+        label: "Xkvisor",
+        href: "https://drive.google.com/file/d/1wbHULud7eTS6xfHbK9wvkJQ7AV0wjsFW/view?usp=sharing",
         description:
-          "Conducted genomic characterization of viral pathogens implicated in post-surgical endophthalmitis using whole genome sequencing (WGS) and PCR-based validation, enabling precise molecular profiling and strain-level identification.",
+          "Designed and implemented xkvisor, a virtualization extension to a monolithic, POSIX-like teaching OS (xk), defining a user-mode hypervisor interface that supports customizable, lightweight guest operating systems. Developed abstractions for safe isolation, resource management, and user-space execution of guest kernels without modifying the host kernel.",
       },
     ],
   },
