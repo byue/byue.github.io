@@ -385,7 +385,7 @@ export const profile = {
         year: "2026",
         label: "Before the 3 AM Page: What Every Software Engineer Should Know About Latency and Load",
         href: "https://medium.com/@yue_bryan123/before-the-3-am-page-what-every-software-engineer-should-know-about-latency-throughput-and-load-af7f7ae08c8a",
-        description: "Medium post on load tesitng, latency and throughput in production systems.",
+        description: "Medium post on load testing, latency and throughput in production systems.",
       },
       {
         year: "2026",
