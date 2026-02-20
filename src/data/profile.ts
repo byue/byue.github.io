@@ -402,6 +402,12 @@ export const profile = {
         description: "Medium Post Explaining Dynamic Programming Problem-Solving Framework.",
       },
       {
+        year: "2026",
+        label: "Before the 3 AM Page: What Every Software Engineer Should Know About Latency and Load",
+        href: "https://medium.com/@yue_bryan123/before-the-3-am-page-what-every-software-engineer-should-know-about-latency-and-load-09462e7db1c2",
+        description: "Medium post on latency and load tradeoffs in production systems.",
+      },
+      {
         year: "2017",
         label: "Molecular Diagnostic Evaluation of Post-surgical Endophthalmitis",
         href: "https://iovs.arvojournals.org/article.aspx?articleid=2641371",
