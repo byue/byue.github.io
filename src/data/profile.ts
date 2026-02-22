@@ -42,13 +42,13 @@ export const profile = {
   repoName: "byue.github.io",
   person: {
     name: "Bryan Yue",
-    title: "Machine Learning Engineer",
+    title: "Software Engineer",
     location: "Greater Seattle Area",
     email: "yue_bryan123@hotmail.com",
     linkedin: "https://www.linkedin.com/in/bryanyue322",
     github: "https://github.com/byue",
     summary:
-      "I build scalable, dependable systems at the intersection of software and machine learning, with 7+ years of experience focused on reliability, performance, and customer impact.",
+      "Software Engineer with 7 years of experience developing production-grade distributed systems and cloud-native backend platforms at Amazon, Microsoft, and Bloomberg. Specializes in system design and performance optimization across high-throughput APIs, event-driven workers, and cloud-native microservices on AWS and Azure. Drives cross-functional roadmap planning, mentors engineers through complex technical trade-off discussions, and delivers reliable, observable production systems at scale.",
   },
   navigation: [
     { id: "about", label: "About", kind: "section" as const },
@@ -61,8 +61,8 @@ export const profile = {
     { id: "resume", label: "Resume", kind: "asset" as const, href: "https://github.com/byue/Resume/raw/master/Resume.pdf" },
   ],
   masthead: {
-    title: "Bryan Yue | Machine Learning Engineer",
-    issue: "Amazon | Sponsored Product Ads",
+    title: "Bryan Yue | Software Engineer | Amazon",
+    issue: "",
   },
   theme: {
     backgroundImageId: "background_editorial",
@@ -93,36 +93,37 @@ export const profile = {
     kicker: "Cover Feature",
     deck:
       "Proven in production: reduced mitigation latency from minutes to seconds and increased cloud control-plane throughput by 8x.",
-    metadata: ["Machine Learning Engineer", "AI", "Software Engineer", "Software Developer", "Machine Learning", "Software Engineering", "System Design", "Cross-Team Leadership", "Strategic Planning", "FAANG", "Technical Vision", "Mentorship", "AWS", "Azure"],
+    metadata: ["Software Engineering", "Machine Learning", "AI", "Backend Development", "Web Development", "Concurrency", "Distributed Systems", "System Design", "Cloud"],
     primaryCtaLabel: "Download Resume",
     imagePrimaryId: "hero_primary",
     imageSecondaryId: "hero_secondary",
   },
   about: {
     id: "about",
-    kicker: "Editor's Note",
-    heading: "Software, Practiced as a Long-Form Craft",
+    kicker: "About",
+    heading: "Life Outside the Laptop",
     paragraphs: [
-      "I design and deliver customer-impacting solutions with speed and precision, guided by high standards for quality, structure, and long-term maintainability.",
-      "Across Amazon, Microsoft, and Bloomberg, my work has focused on making complex infrastructure more responsive, more scalable, and easier to evolve in production.",
+      "My ideal weekend starts with a hike I confidently call 'easy' right before the trail humbles me. Early-morning hikes are my reset button: fewer notifications, more fresh air, and just enough uphill to earn breakfast.",
+      "I split the rest of my free time between chess and badminton. Chess is where I build a very smart plan and then blunder my queen, while badminton is pure cardio, chaos, and loud rematches with friends.",
+      "My favorite time is still with family and close friends. Our family dogs run the house like tiny managers and enforce strict rules about snack quality and couch ownership.",
     ],
     pullQuote:
-      "The real cost of complexity is not in how hard a system is to build, but in how hard it becomes to understand, operate, and evolve over time.",
+      "I make a genius chess plan, then blunder my queen five moves later.",
     impactBlocks: [
       {
-        metric: "Global Impact",
-        title: "AWS Shield",
-        note: "Architected a next-generation DDoS mitigation service that increased mitigation efficacy from 10% to 80% and reduced p99 time-to-mitigation from over one minute to 15 seconds across AWS network defenses.",
+        metric: "Hiking",
+        title: "Trail Time",
+        note: "Sunrise trails, fresh air, and a few hours where no one can ask for a quick sync.",
       },
       {
-        metric: "Cross-Team Collaboration",
-        title: "Amazon Sponsored Product Ads",
-        note: "Aligned data platform and ads sourcing teams on multiple architectural decisions for ads query personalization, reducing fragmentation across systems and enabling faster, more reliable delivery of personalization capabilities in production.",
+        metric: "Chess",
+        title: "Thinking Game",
+        note: "Openings, puzzles, and the lifelong mission of not blundering in winning positions.",
       },
       {
-        metric: "Performance Optimization",
-        title: "Azure Stack Compute",
-        note: "Rearchitected on-premises cloud infrastructure for Azure Stack and JEDI in resource-constrained environments, cutting VM provisioning latency by 15 seconds via a zero-disruption VM agent protocol migration and launching IMDS services to unblock container orchestration workloads.",
+        metric: "Badminton",
+        title: "Court Time",
+        note: "Fast rallies, friendly trash talk, and just enough competition to want a rematch.",
       },
     ],
     imageId: "about_immersive",
@@ -130,7 +131,7 @@ export const profile = {
   experience: {
     id: "experience",
     kicker: "Timeline",
-    heading: "Experience",
+    heading: "Work Experience",
     intro:
       "Production is where promises are kept.",
     chapters: [
@@ -142,20 +143,23 @@ export const profile = {
         dateRange: "January 2026-Present",
         location: "Seattle, WA",
         summary:
-          "Machine Learning Engineer for Sponsored Product Ads Search Relevance at Amazon.",
-        highlights: [],
+          "Optimized sponsored product ads search relevance by leveraging machine learning and inference performance optimization techniques.",
+        highlights: [
+          "Designed an ads search query personalization feature using ML-derived brand preference signals, increasing CTR from 3% to 8.3% and CVR from 28.9% to 56.6%.",
+          "Optimized real-time ads relevance model inference to p99 30ms via quantization, model selection, and compilation techniques, enabling low-latency ranking at production scale.",
+        ],
         techUsed: [
           "AWS",
-          "Sagemaker",
-          "Bedrock",
+          "AWS Sagemaker",
+          "AWS Bedrock",
           "LLM",
           "Spring Framework",
           "Memcached",
           "Solr",
           "Java",
           "Python",
-          "CloudWatch",
-          "EC2",
+          "AWS CloudWatch",
+          "AWS EC2",
           "A/B Testing",
           "Typescript"
         ],
@@ -167,33 +171,31 @@ export const profile = {
         id: "aws-2021",
         kicker: "Chapter 04",
         company: "Amazon | AWS Shield",
-        role: "Software Developer",
+        role: "Software Development Engineer",
         dateRange: "November 2021-January 2026",
         location: "Seattle, WA",
         summary:
           "Automated state of the art L34 DDoS detection and mitigation techniques for AWS network infrastructure.",
         highlights: [
-          "Created scope for peers by defining the annual team roadmap with data-driven project prioritization.",
-          "Led the team and designed near real-time mitigation automation, improving efficacy from 10% to 80%.",
-          "Designed a centralized platform for management of IP known offender lists, reducing operator mitigaiton time 30 minutes.",
-          "Unblocked contentious design, release, and operational decisions by disambiguating options.",
+          " Architected AWS Shield annual backend roadmap and led peer scope planning with data-driven prioritization, mentoring teammates through technical design and code review standards for high-impact DDoS mitigation initiatives.",
+          "Engineered near real-time mitigation automation in Java, Ruby, and Clojure for AWS EC2 network defenses using distributed event-driven pipelines, improving DDoS mitigation efficacy from 10% to 80% across global production traffic at scale.",
+          "Designed and launched a centralized cross-team service for known-offender IP list management and deployment, reducing on-call MTTR by 30 minutes, leading incident response coordination, and driving blameless postmortem actions to harden mitigation workflows across orgs."
         ],
         techUsed: [
-          "DDoS Detection",
-          "DDoS Mitigation",
           "AWS",
-          "ECS",
-          "Lambda",
-          "DynamoDB",
-          "S3",
-          "Elasticache",
+          "AWS ECS",
+          "Container",
+          "AWS Lambda",
+          "AWS DynamoDB",
+          "AWS S3",
+          "AWS Elasticache",
           "React",
-          "Step Functions",
-          "OpenSearch",
-          "CloudWatch",
+          "AWS Step Functions",
+          "AWS OpenSearch",
+          "AWS CloudWatch",
           "Java",
-          "SQS",
-          "Kinesis",
+          "AWS SQS",
+          "AWS Kinesis",
           "Clojure",
           "Typescript",
           "Ruby",
@@ -206,17 +208,16 @@ export const profile = {
       {
         id: "microsoft-2019",
         kicker: "Chapter 03",
-        company: "Microsoft | AzureStack Compute",
-        role: "Software Developer",
+        company: "Microsoft | Azure Stack Compute",
+        role: "Software Engineer",
         dateRange: "October 2019-November 2021",
         location: "Redmond, WA",
         summary:
           "Optimized on-premises cloud infrastructure in resource-constrained environments for JEDI program.",
         highlights: [
-          "Rearchitected on-premises cloud infrastructure in resource-constrained environments supporting Azure Stack and JEDI.",
-          "Reduced VM provisioning latency by 15 seconds by safely migrating VM Agents to a new protocol without service disruption.",
-          "Designed and launched services enabling IMDS capabilities, unblocking a class of container orchestration workloads.",
-          "Increased compute control plane-data plane throughput 8x via a bulk VM status API and intelligent caching.",
+          "Designed Azure Stack bulk VM goalstate API in C# and caching strategy that reduced dataplane backpressure by 50x and cut VM provisioning p99 latency by 5 seconds, improving availability for high-concurrency VM provisioning scenarios by 11%.",
+          "Migrated VM agent protocol to reduce infrastructure traffic by 8x while maintaining deployment safety and backward compatibility across heterogeneous VM environments.",
+          "Ported Instance Metadata API capabilities from Azure to Azure Stack in C++, enabling container orchestration and VM provisioning workflows in resource-constrained on-premises environments."
         ],
         techUsed: [
           "Azure",
@@ -229,10 +230,10 @@ export const profile = {
           "C++",
           "Reliable Collections",
           "Blob",
-          "Functions",
-          "Cosmos DB",
-          "Key Vault",
-          "Virtual Machines"
+          "Azure Functions",
+          "Azure Cosmos DB",
+          "Azure Key Vault",
+          "Azure Virtual Machines"
         ],
         marginNote:
           "A systems chapter defined by migration safety, compatibility, and measurable performance wins.",
@@ -248,8 +249,8 @@ export const profile = {
         summary:
           "Supported a time-series database serving billions of queries per day for real-time market data feeds.",
         highlights: [
-          "Led migration of petabytes of historical market data within a strict 6-hour maintenance window, using aggressive caching strategies and low-latency C++ pipelines to meet throughput and availability SLA.",
-          "Designed and prototyped a ranking API for stock insights, integrating data science models to surface high signal analytics for downstream consumers and internal tooling."
+          "Led migration of petabytes of historical market data into SamayDB, a high-throughput time-series database serving billions of daily queries, executing within a strict 6-hour maintenance window while meeting throughput and availability SLAs.",
+          "Designed and prototyped a stock-insights ranking API integrating data science models, enabling higher-signal analytics for downstream consumers and accelerating internal tooling workflows."
         ],
         techUsed: [
           "C++",
@@ -257,7 +258,12 @@ export const profile = {
           "Concurrent Programming",
           "Database Migration",
           "Transactions",
-          "Python"
+          "Atomics",
+          "Locks",
+          "Synchronization Primitives",
+          "Python",
+          "GDB",
+          "Valgrind"
         ],
         marginNote:
           "Throughput at this scale required careful balancing of reliability and sustained transfer performance.",
@@ -271,15 +277,20 @@ export const profile = {
         dateRange: "March 2018-June 2018",
         location: "Seattle, WA",
         summary:
-          "Developed a BLSTM-based multi-speaker speech separation model in PyTorch and deployed training and inference workloads on AWS EC2, building an end-to-end pipeline from spectrogram preprocessing (STFT) through model evaluation and batch inference.",
-        highlights: [],
+          "Multi-source audio speech separation for startup incubator.",
+        highlights: [
+          "Implemented a BLSTM speech separation model with L2 regularization and dropout, achieving 82% test set accuracy on multi-source audio decomposition.",
+          "Built an audiobook web scraper to construct labeled train, validation, and test datasets, and visualized feature distributions using pandas and MFCC plots."
+        ],
         techUsed: [
           "PyTorch",
           "Python",
-          "EC2",
+          "AWS EC2",
           "BLSTM",
-          "Speech Separation",
           "Machine Learning",
+          "Pandas",
+          "Matplotlib",
+          "Jupyter Notebooks",
           "Data Cleaning",
           "Feature Engineering",
           "Web Crawler",
@@ -327,7 +338,7 @@ export const profile = {
         problem:
           "It’s too slow and expensive to turn creative or product ideas into high-quality, cinematic visuals that people can react to. Using commercial systems like Sora for video generation is prohibitively expensive for rapid iteration.",
         approach:
-          "Built a self-hosted text-to-video API powered by a multimodal LLM on VRAM-constrained Pascal GPUs, using a quantized Qwen model for structured scene planning and an optimized Stable Diffusion pipeline for frame synthesis. Implemented latent reuse, keyframe interpolation, attention slicing, CPU–GPU pipelining, and weight quantization to operate within 8–12GB VRAM constraints and reduce render latency by ~40%. Designed a shot-based generation architecture that decomposes prompts into director-style plans (camera, lighting, motion), enabling rapid idea-to-cinematic preview generation.",
+          "Built a self-hosted text-to-video API powered by a multimodal LLM on VRAM-constrained Pascal GPUs, using a quantized Qwen model for structured scene planning and an optimized Stable Diffusion pipeline for frame synthesis. Implemented latent reuse, keyframe interpolation, attention slicing, and quantization to operate within 8–12GB VRAM constraints and reduce image render latency by ~40%. Designed a shot-based generation architecture that decomposes prompts into director-style plans (camera, lighting, motion), enabling rapid idea-to-cinematic preview generation.",
         outcome:
           "Reduced the cost and friction of visual prototyping by making high-fidelity, cinematic previews practical on commodity hardware, enabling ideas to be explored and iterated on in minutes instead of hours or days. This shifted creative exploration from a high-cost, low-frequency activity into a fast feedback loop, allowing teams to validate concepts earlier, discard weak directions sooner, and commit to production with greater confidence.",
         keyNumbers: [

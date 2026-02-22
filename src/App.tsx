@@ -403,7 +403,6 @@ function App() {
                 </Reveal>
               ))}
             </div>
-
           </div>
         </section>
 
